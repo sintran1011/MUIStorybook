@@ -1,6 +1,5 @@
 import { alpha, Chip, ChipProps, Typography } from "@mui/material";
-import React from "react";
-import { theme } from "../../styles/theme";
+import { theme } from "@styles/theme";
 
 interface StatusState {
   color: string;

@@ -13,14 +13,14 @@ import {
   TableRow,
 } from "@mui/material";
 import { ReactNode } from "react";
-import TablePaginationActions from "./TablePagination";
+import TablePaginationActions from "@stories/Table/TablePagination";
 
 export interface GridColDef<T = Record<string, unknown>> {
   field: string;
   headerName: string | ReactNode;
   width?: number | string;
   description?: string;
-  renderCell?: (value: any, row: T) => React.ReactNode;
+  renderCell?: (value: any, row: T) => ReactNode;
 }
 
 export interface TableProps<T = Record<string, unknown>> {
@@ -212,5 +212,3 @@ export const BasicTable = <T extends Record<string, unknown>>(
     </TableContainer>
   );
 };
-
-

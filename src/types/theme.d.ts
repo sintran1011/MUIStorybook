@@ -1,6 +1,4 @@
 import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
-import { ButtonPropsVariantOverrides, ButtonPropsSizeOverrides } from '@mui/material/Button';
-
 import { PaletteColorOptions } from '@mui/material/styles';
 import { CSSProperties } from 'react';
 

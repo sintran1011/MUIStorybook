@@ -13,6 +13,12 @@
       "@constants/*": [
         "src/constants/*"
       ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
       "@stories/*": [
         "src/stories/*"
       ]

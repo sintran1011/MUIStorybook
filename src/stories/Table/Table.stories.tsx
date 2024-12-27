@@ -1,10 +1,10 @@
 import React from "react";
 import { Meta } from "@storybook/react";
 import { IconButton, Typography } from "@mui/material";
-import { momentFormatUTC } from "../../utils";
-import { STATUS_OBJ } from "../../constants";
-import { StatusChip } from "../StatusChip/StatusChip";
-import { GridColDef, BasicTable } from "./Table";
+import { momentFormatUTC } from "@utils/index";
+import { STATUS_OBJ } from "@constants/index";
+import { StatusChip } from "@stories/StatusChip";
+import { GridColDef, BasicTable } from "@stories/Table";
 
 interface DiscountData {
   version: string;

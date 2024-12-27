@@ -1,7 +1,6 @@
-import React from "react";
 import { Meta } from "@storybook/react";
 
-import { StatusChip } from "./StatusChip";
+import { StatusChip } from "@stories/StatusChip";
 
 const meta: Meta<typeof StatusChip> = {
   title: "Component/StatusChip",

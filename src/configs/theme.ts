@@ -402,4 +402,4 @@ const baseTheme: ThemeOptions = {
   },
 };
 
-export { baseTheme };
+export default baseTheme;
