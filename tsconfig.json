@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@configs/*": [
+        "src/configs/*"
+      ],
+      "@constants/*": [
+        "src/constants/*"
+      ],
+      "@stories/*": [
+        "src/stories/*"
+      ]
+    }
+  },
+  "include": [
+    "src",
+    "src/stories/.storybook"
+  ]
+}
