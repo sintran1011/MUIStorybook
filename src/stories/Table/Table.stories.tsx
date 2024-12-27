@@ -1,5 +1,5 @@
 import React from "react";
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta } from "@storybook/react";
 import { IconButton, Typography } from "@mui/material";
 import { momentFormatUTC } from "../../utils";
 import { STATUS_OBJ } from "../../constants";
@@ -112,9 +112,8 @@ const meta: Meta<typeof BasicTable> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BasicTable>;
 
-export const BaseTable = {
+export const Default = {
   args: {
     total: 10,
     columns: columns as any,

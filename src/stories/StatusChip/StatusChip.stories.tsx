@@ -1,12 +1,22 @@
 import React from "react";
+import { Meta } from "@storybook/react";
+
 import { StatusChip } from "./StatusChip";
 
-export default {
+const meta: Meta<typeof StatusChip> = {
   title: "Component/StatusChip",
   component: StatusChip,
   parameters: {
     layout: "centered",
   },
   tags: ["autodocs"],
-  args: {},
+};
+
+export default meta;
+
+export const Default = {
+  args: {
+    value: "Current",
+    type: "success",
+  },
 };

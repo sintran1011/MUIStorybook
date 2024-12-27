@@ -14,7 +14,7 @@ export interface StatusChipProps extends Omit<ChipProps, "value"> {
 
 const StatusChip = ({ type, value, sx, ...rest }: StatusChipProps) => {
   if (!value) return null;
-  const formatValue = value.split("_").join(" ").toLowerCase();
+  // const formatValue = value.split("_").join(" ").toLowerCase();
   return (
     <Chip
       label={
@@ -24,7 +24,7 @@ const StatusChip = ({ type, value, sx, ...rest }: StatusChipProps) => {
           lineHeight={"16px"}
           color={STATUS_STATE[type].color}
         >
-          {formatValue}
+          {value}
         </Typography>
       }
       sx={{
