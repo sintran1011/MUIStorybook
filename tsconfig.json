@@ -22,10 +22,18 @@
       "@stories/*": [
         "src/stories/*"
       ]
-    }
+    },
+    "types": [
+      "vite-plugin-svgr/client"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ],
   },
   "include": [
     "src",
-    "src/stories/.storybook"
+    "src/stories/.storybook",
+    "vite.config.ts",
   ]
 }

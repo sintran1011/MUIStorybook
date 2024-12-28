@@ -9,4 +9,11 @@ const STATUS_OBJ: Record<string, string> = {
   [GAME_VERSION_STATUS.ARCHIVED]: "normal",
 } as const;
 
-export { STATUS_OBJ };
+const TOOLBAR_ITEMS = [
+  ["bold", "italic", "strike"],
+  ["heading"],
+  ["ol", "ul"],
+  ["link", "code", "image"],
+];
+
+export { STATUS_OBJ, TOOLBAR_ITEMS };
