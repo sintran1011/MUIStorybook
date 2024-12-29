@@ -127,11 +127,6 @@ export const Default = {
     docs: {
       source: {
         code: `
-import BasicTable, { GridColDef } from 'src/components/Table';
-import { StatusChip } from 'src/components/StatusChip';
-import { momentFormatUTC } from 'src/utils/helpers';
-import DotsIcon from 'src/assets/images/icons/three-dots.svg';
-
 const [query, setQuery] = useState<any>({
   merchantId: undefined,
   search: undefined,
