@@ -65,6 +65,8 @@ Default.parameters = {
   docs: {
     source: {
       code: `
+const theme = useTheme();
+
  <Button
   size="small"
   sx={{ backgroundColor: "#ffffff0a", backdropFilter: "blur(25px)" }}
@@ -96,7 +98,7 @@ Default.parameters = {
 
 <Button
   size="large"
-  sx={{ backgroundColor: "#EF4923" }}
+  sx: { backgroundColor: theme.palette.primary[500] },
 >
   <Typography
     color="white"
