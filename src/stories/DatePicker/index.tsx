@@ -14,21 +14,18 @@ const slotProps = {
     sx: {
       backgroundColor: "transparent",
       "&.MuiPickersDay-today": {
-        backgroundColor: "#23408E",
-        border: "none",
-        color: "white",
-        fontWeight: "bold",
-      },
-      "&:focus.Mui-selected": {
-        backgroundColor: "#ffffff0a",
-      },
-      "&.Mui-selected": {
         backgroundColor: "#ffffff0a",
         color: "white",
         border: "1px solid #767272",
       },
-      "&:hover": {
-        backgroundColor: "#555555",
+      "&.Mui-selected": {
+        backgroundColor: "#23408E",
+        border: "none",
+        color: "white",
+        fontWeight: "bold",
+        "&:focus": {
+          backgroundColor: "#23408E",
+        },
       },
       ...textSx,
     },
