@@ -98,7 +98,7 @@ const theme = useTheme();
 
 <Button
   size="large"
-  sx: { backgroundColor: theme.palette.primary[500] },
+  sx={ backgroundColor: theme.palette.text.primary },
 >
   <Typography
     color="white"
