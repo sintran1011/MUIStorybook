@@ -4,7 +4,7 @@ import DateTimePicker from "@stories/DatePicker";
 import moment from "moment";
 
 const meta: Meta<typeof DateTimePicker> = {
-  title: "Component/DatePicker",
+  title: "Quoxent/DatePicker",
   component: DateTimePicker,
   parameters: {
     layout: "centered",

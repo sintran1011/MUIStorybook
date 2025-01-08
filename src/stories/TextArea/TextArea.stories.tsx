@@ -1,9 +1,9 @@
 import { Meta } from "@storybook/react";
-import Avatar from "@stories/Avatar";
+import TextArea from ".";
 
-const meta: Meta<typeof Avatar> = {
-  title: "Quoxent/Avatar",
-  component: Avatar,
+const meta: Meta<typeof TextArea> = {
+  title: "Quoxent/TextArea",
+  component: TextArea,
   parameters: {
     layout: "centered",
   },
@@ -14,7 +14,6 @@ export default meta;
 
 export const Default = {
   args: {
-    size: "sm",
-    src: "https://picsum.photos/40",
+    width:'800px'
   },
 };

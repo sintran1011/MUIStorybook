@@ -188,7 +188,7 @@ const columns: GridColDef<DiscountData>[] = [
 ];
 
 const meta: Meta<typeof BasicTable> = {
-  title: "Component/BasicTable",
+  title: "Quoxent/BasicTable",
   component: BasicTable,
   parameters: {
     layout: "centered",

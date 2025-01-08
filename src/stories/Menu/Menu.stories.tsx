@@ -10,7 +10,7 @@ import { Typography } from "@mui/material";
 import Button from "@stories/Button";
 
 const meta: Meta<typeof BasicMenu> = {
-  title: "Component/BasicMenu",
+  title: "Quoxent/BasicMenu",
   component: BasicMenu,
   parameters: {
     layout: "centered",

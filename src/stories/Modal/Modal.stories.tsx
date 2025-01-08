@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "@stories/Button";
 
 const meta: Meta<typeof BasicModal> = {
-  title: "Component/BasicModal",
+  title: "Quoxent/BasicModal",
   component: BasicModal,
   parameters: {
     layout: "centered",

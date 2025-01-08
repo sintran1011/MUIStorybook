@@ -3,7 +3,7 @@ import { Meta } from "@storybook/react";
 import Upload from "@stories/Upload";
 
 const meta: Meta<typeof Upload> = {
-  title: "Component/Upload",
+  title: "Quoxent/Upload",
   component: Upload,
   parameters: {
     layout: "centered",

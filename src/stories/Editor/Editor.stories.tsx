@@ -3,7 +3,7 @@ import { Meta } from "@storybook/react";
 import Editor from "@stories/Editor";
 
 const meta: Meta<typeof Editor> = {
-  title: "Component/Editor",
+  title: "Quoxent/Editor",
   component: Editor,
   parameters: {
     layout: "centered",

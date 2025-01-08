@@ -3,7 +3,7 @@ import BasicTabs from "@stories/Tabs";
 import { ReactNode } from "react";
 
 const meta: Meta<typeof BasicTabs> = {
-  title: "Component/BasicTabs",
+  title: "Quoxent/BasicTabs",
   component: BasicTabs,
   parameters: {
     layout: "centered",

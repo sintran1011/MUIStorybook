@@ -4,7 +4,7 @@ import { StatusChip } from "@stories/StatusChip";
 import { Grid2 } from "@mui/material";
 
 const meta: Meta<typeof StatusChip> = {
-  title: "Component/StatusChip",
+  title: "Quoxent/StatusChip",
   component: StatusChip,
   parameters: {
     layout: "centered",

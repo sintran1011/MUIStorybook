@@ -56,7 +56,7 @@ const useGenerateOptions = (props: useGenerateOptionsProps) => {
 };
 
 const meta: Meta<typeof BasicSelect> = {
-  title: "Component/BasicSelect",
+  title: "Quoxent/BasicSelect",
   component: BasicSelect,
   parameters: {
     layout: "centered",

@@ -3,7 +3,7 @@ import Button from "@stories/Button";
 import { Grid2, Typography } from "@mui/material";
 
 const meta: Meta<typeof Button> = {
-  title: "Component/Button",
+  title: "Quoxent/Button",
   component: Button,
   parameters: {
     layout: "centered",
