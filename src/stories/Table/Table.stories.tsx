@@ -4,7 +4,8 @@ import { Box, IconButton, Stack, Typography } from "@mui/material";
 import { momentFormatUTC } from "@utils/index";
 import { STATUS_OBJ } from "@constants/index";
 import { StatusChip } from "@stories/StatusChip";
-import { GridColDef, BasicTable } from "@stories/Table";
+import { GridColDef } from "@stories/Table";
+import BasicTable from "@stories/Table";
 import Avatar from "@stories/Avatar";
 
 interface DiscountData {
