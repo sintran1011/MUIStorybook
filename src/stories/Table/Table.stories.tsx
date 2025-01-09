@@ -267,9 +267,6 @@ const columns: GridColDef<DiscountData>[] = [
         height={"fit-content"}
       >
         <Box
-          sx={{
-            background: url('default-image.jpg') center center no-repeat,
-          }}
           width="40px"
           height="40px"
         >
