@@ -163,34 +163,36 @@ const TABS_DATA = [
 ];
 
 <BasicTabs
-  defaultValue="0"
-  options={TABS_DATA}
-  tabsProps: {
-    sx: {
-      "& .MuiTabs-indicator": {
-        backgroundColor: "transparent",
+    defaultValue="0"
+    options={TABS_DATA}
+    tabsProps={{
+      sx: {
+        '& .MuiTabs-indicator': {
+          backgroundColor: 'transparent',
+        },
+        '& .MuiButtonBase-root.Mui-selected': {
+          color: '#EF4923',
+        },
+        borderRadius: '8px',
+        backgroundColor: '#151313e6',
+        backdropFilter: 'blur(2px)',
+        width: 'fit-content',
+        padding: '0 16px',
       },
-      "& .MuiButtonBase-root.Mui-selected": {
-        color: "#EF4923",
+    }}
+    tabProps={{
+      sx: {
+        '& button': {
+          textTransform: 'capitalize',
+        },
       },
-      borderRadius: "8px",
-      backgroundColor: "#151313e6",
-      backdropFilter: "blur(2px)",
-    },
-  },
-  tabProps={
-    sx: {
-      "& button": {
-        textTransform: "capitalize",
-      },
-    },
-  }
-  tabPanelSx={{
-    borderRadius: "8px",
-    padding: "24px 0 0 0",
-  }}
-  renderContentTab={(opt: TabItem) => opt?.content}
-/>;
+    }}
+    tabPanelSx={{
+      borderRadius: '8px',
+      padding: '24px 0 0 0',
+    }}
+    renderContentTab={(opt: TabItem) => opt?.content}
+  />
         `,
       },
     },
