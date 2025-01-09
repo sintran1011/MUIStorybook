@@ -1,32 +1,31 @@
-import { styled } from "@mui/material";
-import Input from ".";
+import { InputProps } from '@mui/material';
+import { Key } from 'react';
+import Input from '.';
 
-const StyledInputNumber = styled(Input)({
-  "& input[type=number]::-webkit-outer-spin-button, & input[type=number]::-webkit-inner-spin-button":
-    {
-      appearance: "none",
-      margin: 0,
-    },
-  "& input[type=number]": {
-    appearance: "textfield",
-  },
-  "&": { borderRadius: "4px", width: "100%" },
-  "&:hover": {
-    "&:not(.Mui-disabled, .Mui-error)": {
-      "&::after": {
-        borderWidth: 1,
-        borderColor: "#FFFFFF",
-      },
-      "&::focus": {
-        borderColor: "#FFFFFF",
-        borderWidth: 1,
-      },
-      "&::before": {
-        borderWidth: 0,
-        borderColor: "#ffffff80",
-      },
-    },
-  },
-});
+interface InputNumberProps extends Omit<InputProps, 'onChange' | 'ref'> {
+  readOnly?: boolean;
+  value?: Key;
+  onChange?: (val: Key) => void;
+}
 
-export default StyledInputNumber;
+const InputNumber = (props: InputNumberProps) => {
+  const { readOnly, value, onChange = () => {}, placeholder, ...rest } = props;
+  return (
+    <Input
+      readOnly={readOnly}
+      type='text'
+      noHint
+      value={value}
+      placeholder={placeholder}
+      sx={{ borderRadius: '4px' }}
+      {...rest}
+      onChange={e => {
+        const inputValue = e.target.value;
+        const validInput = inputValue.replace(/[^0-9.,]/g, '');
+        onChange(validInput);
+      }}
+    />
+  );
+};
+
+export default InputNumber;
