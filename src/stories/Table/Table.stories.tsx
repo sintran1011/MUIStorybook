@@ -73,13 +73,7 @@ const columns: GridColDef<DiscountData>[] = [
         flexDirection="row"
         height={"fit-content"}
       >
-        <Box
-          sx={{
-            background: `url('default-image.jpg') center center no-repeat`,
-          }}
-          width="40px"
-          height="40px"
-        >
+        <Box width="40px" height="40px">
           <Box
             component="img"
             borderRadius="8px"
@@ -88,10 +82,12 @@ const columns: GridColDef<DiscountData>[] = [
           />
         </Box>
         <Typography
+          title={title}
           variant="body-medium"
           fontSize="14px"
           lineHeight="20px"
           color="white"
+          className="line-clamp-2"
           sx={{
             cursor: "pointer",
             "&:hover": {
@@ -271,10 +267,7 @@ const columns: GridColDef<DiscountData>[] = [
         flexDirection="row"
         height={"fit-content"}
       >
-        <Box
-          width="40px"
-          height="40px"
-        >
+        <Box width="40px" height="40px">
           <Box
             component="img"
             borderRadius="8px"
@@ -283,10 +276,12 @@ const columns: GridColDef<DiscountData>[] = [
           />
         </Box>
         <Typography
+          title={title}
           variant="body-medium"
           fontSize="14px"
           lineHeight="20px"
           color="white"
+          className="line-clamp-2"
           sx={{
             cursor: "pointer",
             "&:hover": {
