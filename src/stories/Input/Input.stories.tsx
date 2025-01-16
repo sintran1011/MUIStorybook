@@ -18,7 +18,7 @@ export const Default = () => {
   return (
     <Stack flexDirection={"row"} gap={6}>
       <Input placeholder="Input Text" noHint />
-      <StyledInputNumber type="number" placeholder="Input Number" noHint />
+      <StyledInputNumber type="number" placeholder="Input Number" />
     </Stack>
   );
 };
