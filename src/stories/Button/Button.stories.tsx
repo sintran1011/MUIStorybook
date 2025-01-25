@@ -21,20 +21,21 @@ const ARR: {
     title: "Cancel / small",
     props: {
       size: "small",
-      sx: { backgroundColor: "#ffffff0a", backdropFilter: "blur(25px)" },
+      variant: "outlined",
     },
   },
   {
     title: "Create / medium",
     props: {
       size: "medium",
+      variant: "primary",
     },
   },
   {
     title: "Delete / large",
     props: {
       size: "large",
-      sx: { backgroundColor: "#EF4923" },
+      variant: "secondary",
     },
   },
 ];
@@ -44,17 +45,7 @@ export const Default = () => {
     <Grid2 spacing={4} container>
       {ARR.map((i) => (
         <Grid2 key={i.title}>
-          <Button {...i.props}>
-            <Typography
-              color="white"
-              variant="label-large"
-              fontSize="14px"
-              fontWeight={600}
-              lineHeight="18px"
-            >
-              {i.title}
-            </Typography>
-          </Button>
+          <Button {...i.props}>{i.title}</Button>
         </Grid2>
       ))}
     </Grid2>
@@ -69,46 +60,23 @@ const theme = useTheme();
 
  <Button
   size="small"
-  sx={{ backgroundColor: "#ffffff0a", backdropFilter: "blur(25px)" }}
+  variant="outlined"
 >
-  <Typography
-    color="white"
-    variant="label-large"
-    fontSize="14px"
-    fontWeight={600}
-    lineHeight="18px"
-  >
-    Cancel / small
-  </Typography>
+ Cancel / small
 </Button>
 
 <Button
   size="medium"
+  variant="primary"
 >
-  <Typography
-    color="white"
-    variant="label-large"
-    fontSize="14px"
-    fontWeight={600}
-    lineHeight="18px"
-  >
-    Create / medium
-  </Typography>
+ Create / medium
 </Button>
 
 <Button
   size="large"
-  sx={ backgroundColor: theme.palette.text.primary },
+  variant="secondary"
 >
-  <Typography
-    color="white"
-    variant="label-large"
-    fontSize="14px"
-    fontWeight={600}
-    lineHeight="18px"
-  >
-    Delete / large
-  </Typography>
+  Delete / large
 </Button>     
       `,
     },
