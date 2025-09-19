@@ -1,32 +1,31 @@
-import { Meta } from "@storybook/react";
+import { Meta } from '@storybook/react';
 
-import { StatusChip } from "@stories/StatusChip";
-import { Grid2 } from "@mui/material";
+import { StatusChip } from '@stories/StatusChip';
+import { Grid2 } from '@mui/material';
 
 const meta: Meta<typeof StatusChip> = {
-  title: "Quoxent/StatusChip",
+  title: 'Nexus/StatusChip',
   component: StatusChip,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
 
 const ARR = [
-  { type: "success", value: "Success" },
-  { type: "normal", value: "Normal" },
-  { type: "disabled", value: "Disabled" },
-  { type: "review", value: "Review" },
-  { type: "ready", value: "Ready" },
-  { type: "reject", value: "Reject" },
+  { type: 'Active', value: 'Active' },
+  { type: 'Suspended', value: 'Suspended' },
+  { type: 'Inactive', value: 'Inactive' },
+  { type: 'Left', value: 'Left' },
+  { type: 'Open', value: 'Open' },
 ];
 
 export const Default = () => {
   return (
     <Grid2 spacing={4} container>
-      {ARR.map((i) => (
+      {ARR.map(i => (
         <Grid2 key={i.type}>
           <StatusChip type={i.type} value={i.value} />
         </Grid2>
@@ -45,7 +44,6 @@ Default.parameters = {
       <StatusChip type="disabled" value="Disabled" />
       <StatusChip type="review" value="Review" />
       <StatusChip type="ready" value="Ready" />
-      <StatusChip type="reject" value="Reject" />
       `,
     },
   },

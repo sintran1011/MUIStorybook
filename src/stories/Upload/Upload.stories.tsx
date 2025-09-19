@@ -1,14 +1,14 @@
-import { Meta } from "@storybook/react";
+import { Meta } from '@storybook/react';
 
-import Upload from "@stories/Upload";
+import Upload from '@stories/Upload';
 
 const meta: Meta<typeof Upload> = {
-  title: "Quoxent/Upload",
+  title: 'Nexus/Upload',
   component: Upload,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -17,7 +17,7 @@ export const Default = {
   args: {
     processStepsRender: 3,
     containerSx: {
-      width: "800px",
+      width: '800px',
     },
   },
 };

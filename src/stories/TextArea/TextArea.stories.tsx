@@ -1,19 +1,15 @@
-import { Meta } from "@storybook/react";
-import TextArea from ".";
+import { Meta } from '@storybook/react';
+import TextArea from '.';
 
 const meta: Meta<typeof TextArea> = {
-  title: "Quoxent/TextArea",
+  title: 'Nexus/TextArea',
   component: TextArea,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
 
-export const Default = {
-  args: {
-    width: "800px",
-  },
-};
+export const Default = () => <TextArea maxCharacters={500} width={800} />;

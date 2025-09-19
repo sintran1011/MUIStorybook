@@ -1,12 +1,10 @@
 import { Meta } from '@storybook/react';
+import { Stack } from '@mui/material';
+import Autocomplete from '.';
 
-import BasicSelect from '@stories/Select';
-import { Stack, Typography } from '@mui/material';
-import { useState } from 'react';
-
-const meta: Meta<typeof BasicSelect> = {
-  title: 'Nexus/BasicSelect',
-  component: BasicSelect,
+const meta: Meta<typeof Autocomplete> = {
+  title: 'Nexus/Autocomplete',
+  component: Autocomplete,
   parameters: {
     layout: 'centered',
   },
@@ -15,29 +13,16 @@ const meta: Meta<typeof BasicSelect> = {
 
 export default meta;
 
-const DISCOUNT_TYPE_LIST = [
-  'Launch Discount',
-  'Weeklong Deals',
-  'Seasonal Sales',
-  'Midweek Deals',
-  'Daily Deals',
-  'Weekend Deals',
-  'Custom Discount',
-];
-
 export const Default = () => {
-  const [value1, setValue1] = useState<any>('Launch Discount');
-  const [value2, setValue2] = useState<any>(['Weeklong Deals']);
-  const [value3, setValue3] = useState<any>('Seasonal Sales');
-
   return (
     <Stack flexDirection={'row'} gap={6}>
-      <BasicSelect
+      <Autocomplete
         options={[
           { label: 'SinCEO', value: 'ceo' },
           { label: 'SinPM', value: 'pm' },
           { label: 'SinFE', value: 'fe' },
         ]}
+        isControlled
       />
     </Stack>
   );
@@ -88,39 +73,13 @@ Default.parameters = {
     };
   });
 };
-//Radio Select
 <BasicSelect
-  options={useGenerateOptions({
-    list: ${JSON.stringify(DISCOUNT_TYPE_LIST, null, 2)},
-    value: "Launch Discount",
-    type: "radio",
-  })}
+  options={[]}
   value="Launch Discount"
   onChange={(newValue) => console.log(newValue)}
   width={200}
 />
-//Checkbox Select
-<BasicSelect
-  options={useGenerateOptions({
-    list: ${JSON.stringify(DISCOUNT_TYPE_LIST, null, 2)},
-    value: ["Launch Discount"],
-    type: "checkbox",
-  })}
-  value={["Launch Discount"]}
-  onChange={(newValue) => console.log(newValue)}
-  width={200}
-/>
-//Base Select
-<BasicSelect
-  options={useGenerateOptions({
-    list: ${JSON.stringify(DISCOUNT_TYPE_LIST, null, 2)},
-    value: "Launch Discount",
-    type: "none",
-  })}
-  value="Launch Discount"
-  onChange={(newValue) => console.log(newValue)}
-  width={200}
-/>`,
+`,
     },
   },
 };

@@ -1,14 +1,14 @@
-import { Meta } from "@storybook/react";
-import Button from "@stories/Button";
-import { Grid2, Typography } from "@mui/material";
+import { Meta } from '@storybook/react';
+import Button from '@stories/Button';
+import { Grid2, Typography } from '@mui/material';
 
 const meta: Meta<typeof Button> = {
-  title: "Quoxent/Button",
+  title: 'Nexus/Button',
   component: Button,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -18,24 +18,24 @@ const ARR: {
   props: Record<string, any>;
 }[] = [
   {
-    title: "Cancel / small",
+    title: 'Cancel / small',
     props: {
-      size: "small",
-      variant: "outlined",
+      size: 'small',
+      variant: 'outlined',
     },
   },
   {
-    title: "Create / medium",
+    title: 'Create / medium',
     props: {
-      size: "medium",
-      variant: "primary",
+      size: 'medium',
+      variant: 'primary',
     },
   },
   {
-    title: "Delete / large",
+    title: 'Delete / large',
     props: {
-      size: "large",
-      variant: "secondary",
+      size: 'large',
+      variant: 'secondary',
     },
   },
 ];
@@ -43,7 +43,7 @@ const ARR: {
 export const Default = () => {
   return (
     <Grid2 spacing={4} container>
-      {ARR.map((i) => (
+      {ARR.map(i => (
         <Grid2 key={i.title}>
           <Button {...i.props}>{i.title}</Button>
         </Grid2>

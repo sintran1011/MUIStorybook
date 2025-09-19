@@ -1,23 +1,23 @@
-import { Meta } from "@storybook/react";
-import Input from ".";
-import { Stack } from "@mui/material";
-import InputNumber from "./InputNumber";
+import { Meta } from '@storybook/react';
+import { Stack } from '@mui/material';
+import BaseInput from '.';
+import InputNumber from './InputNumber';
 
-const meta: Meta<typeof Input> = {
-  title: "Quoxent/Input",
-  component: Input,
+const meta: Meta<typeof BaseInput> = {
+  title: 'Nexus/BaseInput',
+  component: BaseInput,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
 
 export const Default = () => {
   return (
-    <Stack flexDirection={"row"} gap={6}>
-      <Input placeholder="Input Text" />
+    <Stack flexDirection={'row'} gap={6}>
+      <BaseInput placeholder="Input Text" />
       <InputNumber type="number" placeholder="Input Number" />
     </Stack>
   );

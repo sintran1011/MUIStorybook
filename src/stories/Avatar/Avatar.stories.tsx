@@ -1,20 +1,20 @@
-import { Meta } from "@storybook/react";
-import Avatar from "@stories/Avatar";
+import { Meta } from '@storybook/react';
+import Avatar from '@stories/Avatar';
 
 const meta: Meta<typeof Avatar> = {
-  title: "Quoxent/Avatar",
+  title: 'Nexus/Avatar',
   component: Avatar,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
 
 export const Default = {
   args: {
-    size: "sm",
-    src: "https://picsum.photos/40",
+    size: 'xl',
+    src: 'https://picsum.photos/40',
   },
 };

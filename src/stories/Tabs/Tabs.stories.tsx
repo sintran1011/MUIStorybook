@@ -1,14 +1,14 @@
-import { Meta } from "@storybook/react";
-import BasicTabs from "@stories/Tabs";
-import { ReactNode } from "react";
+import { Meta } from '@storybook/react';
+import BasicTabs from '@stories/Tabs';
+import { ReactNode } from 'react';
 
 const meta: Meta<typeof BasicTabs> = {
-  title: "Quoxent/BasicTabs",
+  title: 'Nexus/BasicTabs',
   component: BasicTabs,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export default meta;
@@ -17,34 +17,34 @@ type TabItem = { label: string; content: ReactNode; key: string };
 
 const TABS_DATA = [
   {
-    label: "Build Version",
+    label: 'Build Version',
     content: <div>Build Version content</div>,
-    key: "0",
+    key: '0',
   },
   {
-    label: "Discount Management",
+    label: 'Discount Management',
     content: <div>Discount Management content</div>,
-    key: "1",
+    key: '1',
   },
   {
-    label: "News & Announcement",
+    label: 'News & Announcement',
     content: <div>News & Announcement content</div>,
-    key: "2",
+    key: '2',
   },
 ];
 
 export const Default = {
   args: {
     options: TABS_DATA,
-    defaultValue: "0",
+    defaultValue: '0',
     tabPanelSx: {
-      borderRadius: "8px",
-      padding: "24px 0 0 0",
+      borderRadius: '8px',
+      padding: '24px 0 0 0',
     },
     tabProps: {
       sx: {
-        "& button": {
-          textTransform: "capitalize",
+        '& button': {
+          textTransform: 'capitalize',
         },
       },
     },
@@ -105,30 +105,30 @@ const TABS_DATA = [
 export const FilledTabs = {
   args: {
     options: TABS_DATA,
-    defaultValue: "0",
+    defaultValue: '0',
     tabsProps: {
       sx: {
-        "& .MuiTabs-indicator": {
-          backgroundColor: "transparent",
+        '& .MuiTabs-indicator': {
+          backgroundColor: 'transparent',
         },
-        "& .MuiButtonBase-root.Mui-selected": {
-          color: "#EF4923",
+        '& .MuiButtonBase-root.Mui-selected': {
+          color: '#EF4923',
         },
-        borderRadius: "8px",
-        backgroundColor: "#151313e6",
-        backdropFilter: "blur(2px)",
+        borderRadius: '8px',
+        backgroundColor: '#151313e6',
+        backdropFilter: 'blur(2px)',
       },
     },
     tabProps: {
       sx: {
-        "& button": {
-          textTransform: "capitalize",
+        '& button': {
+          textTransform: 'capitalize',
         },
       },
     },
     tabPanelSx: {
-      borderRadius: "8px",
-      padding: "24px 0 0 0",
+      borderRadius: '8px',
+      padding: '24px 0 0 0',
     },
     renderContentTab: (opt: TabItem) => {
       return opt?.content;
