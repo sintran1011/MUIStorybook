@@ -1,43 +1,80 @@
-import { Box, Stack, Typography } from "@mui/material";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Typography,
+  Box,
+  Stack,
+  useTheme,
+} from "@mui/material";
+import type {
+  SxProps,
+  Theme,
+  DialogTitleProps,
+  DialogContentProps,
+  DialogProps,
+  TypographyProps,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { CSSProperties, ReactNode } from "react";
-import LFGModal from "./LFGModal";
+import type { ReactNode } from "react";
 import Button from "@stories/Button";
+import { isEmpty } from "lodash";
 
 type ButtonProps = {
-  text?: string;
-  sx?: CSSProperties;
-  props?: Record<string, any>;
+  text?: string | ReactNode;
+  sx?: SxProps<Theme>;
+  props?: Record<string, unknown>;
 };
 
 interface ModalProps {
   open: boolean;
-  onClose: () => void;
-  title: string;
-  hasFooter?: boolean;
+  isFullScreen?: boolean;
+  onClose?: (event?: any, reason?: any) => void;
+  onSave?: () => void;
+  title?: string | ReactNode;
+  children: ReactNode;
+  footerSx?: SxProps<Theme>;
+  modalProps?: Omit<DialogProps, "open">;
+  titleProps?: DialogTitleProps;
+  contentProps?: DialogContentProps;
+  typographyProps?: TypographyProps;
   firstButton?: ButtonProps;
   secondButton?: ButtonProps;
-  children?: ReactNode;
-  footerSx?: CSSProperties;
-  description?: string;
+  width?: number | string;
+  hasFooter?: boolean;
+  hasTitle?: boolean;
+  icon?: ReactNode;
+  hasClosedIcon?: boolean;
 }
 
 const BasicModal = (props: ModalProps) => {
   const {
-    open = false,
-    onClose = () => {},
+    open,
+    isFullScreen = false,
+    onClose,
+    onSave,
+    title,
+    children,
+    modalProps,
+    titleProps,
+    contentProps,
     hasFooter = true,
-    footerSx = null,
+    hasTitle = true,
+    hasClosedIcon = true,
+    typographyProps,
+    footerSx,
+    width = 400,
     firstButton = {
-      text: "",
+      text: "Cancel",
     },
     secondButton = {
-      text: "Create",
+      text: "Save",
     },
-    children,
-    title = "",
-    description = "",
+    icon,
   } = props;
+
+  const { palette } = useTheme();
 
   const renderFooter = () => (
     <Stack
@@ -49,78 +86,135 @@ const BasicModal = (props: ModalProps) => {
     >
       <Button
         onClick={onClose}
-        size="medium"
+        variant="outlined"
+        color="neutral"
         sx={{
-          backgroundColor: "#ffffff0a",
-          backdropFilter: "blur(25px)",
           ...firstButton.sx,
         }}
         {...firstButton.props}
       >
-        <Typography
-          color="white"
-          variant="label-large"
-          fontSize="14px"
-          fontWeight={600}
-          lineHeight="18px"
-        >
-          {firstButton.text || "Cancel"}
-        </Typography>
+        {typeof firstButton.text === "string" || isEmpty(firstButton.text) ? (
+          <Typography
+            color="text.primary"
+            variant="body-medium"
+            fontWeight={600}
+          >
+            {firstButton.text || "Cancel"}
+          </Typography>
+        ) : (
+          firstButton.text
+        )}
       </Button>
       <Button
-        size="medium"
+        variant="contained"
+        onClick={onSave}
         sx={{
           ...secondButton.sx,
         }}
         {...secondButton.props}
       >
-        <Typography
-          color="white"
-          variant="label-large"
-          fontSize="14px"
-          fontWeight={600}
-          lineHeight="18px"
-        >
-          {secondButton.text || "Create"}
-        </Typography>
+        {typeof secondButton.text === "string" || isEmpty(secondButton.text) ? (
+          <Typography color="white" variant="body-medium" fontWeight={600}>
+            {secondButton.text || "Create"}
+          </Typography>
+        ) : (
+          secondButton.text
+        )}
       </Button>
     </Stack>
   );
 
   return (
-    <LFGModal
-      title={title}
+    <Dialog
       open={open}
-      size="xs"
+      disableScrollLock={false}
       onClose={onClose}
-      actions={hasFooter ? renderFooter() : null}
-      titleProps={{ sx: { padding: "16px 24px 8px 24px" } }}
+      {...modalProps}
+      sx={
+        isFullScreen
+          ? {
+              "& .MuiPaper-root": {
+                maxHeight: "100%",
+                height: "100% !important",
+                margin: "0px !important",
+                width: "100%",
+                maxWidth: "100%",
+              },
+            }
+          : {
+              "& .MuiPaper-root": {
+                background: "white",
+                color: palette.text.secondary,
+                width,
+                maxWidth: width,
+              },
+              ...modalProps?.sx,
+            }
+      }
     >
-      <Box
-        width="24px"
-        height="24px"
-        position={"absolute"}
-        top={"16px"}
-        right={"24px"}
-      >
-        <CloseIcon onClick={onClose} style={{ cursor: "pointer" }} />
-      </Box>
-      {description ? (
-        <Typography
-          variant="body-medium"
-          fontSize={"14px"}
-          fontWeight={400}
-          lineHeight={"20px"}
-          color="dark.300"
-          display={"block"}
-          marginBottom={"24px"}
+      {hasClosedIcon ? (
+        <Box
+          width="24px"
+          height="24px"
+          position={"absolute"}
+          top={"12px"}
+          right={"12px"}
         >
-          {description}
-        </Typography>
+          <CloseIcon onClick={onClose} style={{ cursor: "pointer" }} />
+        </Box>
       ) : null}
-      {children}
-    </LFGModal>
+      {hasTitle ? (
+        <DialogTitle
+          display={"flex"}
+          alignItems={"center"}
+          flexDirection={"row"}
+          gap={2}
+          p={"10px 24px !important"}
+          {...titleProps}
+        >
+          {icon ? icon : null}
+          {typeof title === "string" ? (
+            <Typography
+              fontWeight={700}
+              variant="header-x-large"
+              color="text.primary"
+              {...typographyProps}
+            >
+              {title}
+            </Typography>
+          ) : (
+            title
+          )}
+        </DialogTitle>
+      ) : null}
+      <DialogContent
+        {...contentProps}
+        sx={{
+          position: "relative",
+          fontWeight: "400",
+          fontSize: "14px",
+          lineHeight: "20px",
+          p: "0px 24px",
+          ...contentProps?.sx,
+        }}
+      >
+        {children}
+      </DialogContent>
+      {hasFooter ? (
+        <DialogActions
+          sx={{
+            fontWeight: "600",
+            fontSize: "14px",
+            lineHeight: "18px",
+          }}
+        >
+          {renderFooter()}
+        </DialogActions>
+      ) : null}
+    </Dialog>
   );
 };
 
 export default BasicModal;
+
+BasicModal.displayName = "BasicModal";

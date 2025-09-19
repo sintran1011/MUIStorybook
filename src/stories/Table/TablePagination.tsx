@@ -4,32 +4,32 @@ import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
-import { TablePaginationActionsProps } from "@mui/material/TablePagination/TablePaginationActions";
+import { type TablePaginationActionsProps } from "@mui/material/TablePagination/TablePaginationActions";
 
 const TablePaginationActions = (props: TablePaginationActionsProps) => {
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
 
   const handleFirstPageButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     onPageChange(event, 0);
   };
 
   const handleBackButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     onPageChange(event, page - 1);
   };
 
   const handleNextButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     onPageChange(event, page + 1);
   };
 
   const handleLastPageButtonClick = (
-    event: React.MouseEvent<HTMLButtonElement>
+    event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
@@ -38,9 +38,9 @@ const TablePaginationActions = (props: TablePaginationActionsProps) => {
     <Box flexShrink={0} ml={2.5}>
       <IconButton
         sx={{
-          color: "white",
+          color: "text.primary",
           ":disabled": {
-            color: "dark.300",
+            color: "text.disabled",
           },
         }}
         onClick={handleFirstPageButtonClick}
@@ -51,9 +51,9 @@ const TablePaginationActions = (props: TablePaginationActionsProps) => {
       </IconButton>
       <IconButton
         sx={{
-          color: "white",
+          color: "text.primary",
           ":disabled": {
-            color: "dark.300",
+            color: "text.disabled",
           },
         }}
         onClick={handleBackButtonClick}
@@ -68,9 +68,9 @@ const TablePaginationActions = (props: TablePaginationActionsProps) => {
       </IconButton>
       <IconButton
         sx={{
-          color: "white",
+          color: "text.primary",
           ":disabled": {
-            color: "dark.300",
+            color: "text.disabled",
           },
         }}
         onClick={handleNextButtonClick}
@@ -85,9 +85,9 @@ const TablePaginationActions = (props: TablePaginationActionsProps) => {
       </IconButton>
       <IconButton
         sx={{
-          color: "white",
+          color: "text.primary",
           ":disabled": {
-            color: "dark.300",
+            color: "text.disabled",
           },
         }}
         onClick={handleLastPageButtonClick}

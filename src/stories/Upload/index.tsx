@@ -106,14 +106,14 @@ const Upload = (props: UploadProps) => {
   }
   const handleDropFile = (file: File[], rejectFile: FileRejection[]) => {
     const isOverMaxFile = rejectFile.some(
-      (i) => i.errors[0].code === "too-many-files"
+      (i) => i.errors[0].code === "too-many-files",
     );
     if (isOverMaxFile)
       toast.warning(`You can only upload maximum ${maxFiles} files`);
     const formatThumbnail = file.map((file) =>
       Object.assign(file, {
         url: URL.createObjectURL(file),
-      })
+      }),
     );
     const clone = [...values, ...formatThumbnail];
     clone.splice(0, clone.length - (maxFiles || 0));
@@ -168,12 +168,7 @@ const Upload = (props: UploadProps) => {
             </Typography>
           </Divider>
           <Button disabled={disabled}>
-            <Typography
-              fontSize="14px"
-              fontWeight="600"
-              lineHeight="18px"
-              variant="label-large"
-            >
+            <Typography fontSize="14px" fontWeight="600" lineHeight="18px">
               Select File
             </Typography>
           </Button>
@@ -199,7 +194,6 @@ const Upload = (props: UploadProps) => {
             fontSize={"14px"}
             fontWeight={600}
             lineHeight={"18px"}
-            variant="label-large"
           >
             Uploading...
           </Typography>
@@ -216,7 +210,6 @@ const Upload = (props: UploadProps) => {
             fontSize={"14px"}
             fontWeight={600}
             lineHeight={"18px"}
-            variant="label-large"
           >
             {progress}%
           </Typography>
@@ -256,7 +249,6 @@ const Upload = (props: UploadProps) => {
               fontSize="14px"
               lineHeight="18px"
               fontWeight="400"
-              variant="label-large"
               component="span"
             >
               {values && values.length > 1
@@ -308,7 +300,8 @@ const Upload = (props: UploadProps) => {
   const renderContent = () => {
     if (processStepsRender >= 2 && progress && progress > 0 && progress < 100)
       return renderProgressLoading(progress);
-    if (processStepsRender >= 3 && values.length > 0) return renderAfterUpload(values);
+    if (processStepsRender >= 3 && values.length > 0)
+      return renderAfterUpload(values);
     return renderBeforeUpload();
   };
 

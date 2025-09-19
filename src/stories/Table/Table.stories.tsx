@@ -112,7 +112,7 @@ const columns: GridColDef<DiscountData>[] = [
         flexDirection="row"
         height={"fit-content"}
       >
-        <Avatar size="sm" src={"https://picsum.photos/40"} alt="" />
+        <Avatar size="sm" src={"https://picsum.photos/40"} />
         <Typography
           variant="body-medium"
           fontSize="14px"

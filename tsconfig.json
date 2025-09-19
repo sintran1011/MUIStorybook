@@ -3,37 +3,25 @@
     "baseUrl": "./",
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "target": "ES2020",
+    "downlevelIteration": true,
+    "moduleResolution": "bundler",
+    "lib": ["ES2020", "DOM"],
     "paths": {
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@configs/*": [
-        "src/configs/*"
-      ],
-      "@constants/*": [
-        "src/constants/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@stories/*": [
-        "src/stories/*"
-      ]
+      "@assets/*": ["src/assets/*"],
+      "@configs/*": ["src/configs/*"],
+      "@constants/*": ["src/constants/*"],
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
+      "@stories/*": ["src/stories/*"]
     },
-    "types": [
-      "vite-plugin-svgr/client"
-    ],
-    "lib": [
-      "es2016",
-      "dom"
-    ],
+    "types": ["vite-plugin-svgr/client"]
   },
   "include": [
     "src",
     "src/stories/.storybook",
-    "vite.config.ts",
+    "vite.config.js",
+    "src/types/theme.d.ts"
   ]
 }

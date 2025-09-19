@@ -1,9 +1,8 @@
 import { Button as MUIButton } from "@mui/material";
 import { ComponentPropsWithoutRef, forwardRef } from "react";
 import { CustomButton } from "./styled";
-import "./Button.css";
 
-export interface ButtonProps
+export interface ButtonBaseProps
   extends ComponentPropsWithoutRef<typeof MUIButton> {
   fullWidth?: boolean;
   className?: string;
@@ -12,39 +11,38 @@ export interface ButtonProps
   style?: React.CSSProperties;
   icon?: boolean;
   component?: React.ElementType;
+  width?: string | number;
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) => {
   const {
     children,
-    icon = false,
     className,
     loading = false,
     size = "medium",
     fullWidth = false,
     disabled,
     onClick,
-    style,
     component,
-    variant = "primary",
-    ...buttonProps
+    variant = "contained",
+    width = "fit-content",
+    ...rest
   } = props;
-
-  const clsIcon = icon ? "MuiButton-icon" : "";
 
   return (
     <CustomButton
+      loading={loading}
+      loadingPosition="start"
       variant={variant}
-      disabled={disabled || loading}
+      disabled={disabled}
       size={size}
-      sx={{ width: fullWidth ? "auto" : "fit-content" }}
+      sx={{ width: fullWidth ? "100%" : width, cursor: "pointer" }}
       ref={ref}
       component={component}
       onClick={onClick}
-      className={`${clsIcon} ${className}`}
-      {...buttonProps}
+      className={className}
+      {...rest}
     >
-      {loading && <div className="button-loader" style={style} />}
       {children}
     </CustomButton>
   );

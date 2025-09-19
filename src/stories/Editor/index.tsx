@@ -65,9 +65,11 @@ const Editor = (props: EditorProps) => {
           toolbarItems={TOOLBAR_ITEMS}
           plugins={[colorPlugin]}
           onChange={handleChange}
-          hooks={{
-            // addImageBlobHook: handleImageUpload,
-          }}
+          hooks={
+            {
+              // addImageBlobHook: handleImageUpload,
+            }
+          }
         />
       )}
     </StyledEditorWrapper>

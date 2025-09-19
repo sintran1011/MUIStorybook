@@ -4,70 +4,78 @@
 
 /* Regular (Book) */
 @font-face {
-  font-family: 'CircularStd';
-  src: url('/src/assets/fonts/CircularStd/CircularStd-Book.woff2') format('woff2');
+  font-family: "CircularStd";
+  src: url("/src/assets/fonts/CircularStd/CircularStd-Book.woff2")
+    format("woff2");
   font-weight: 400; /* Normal weight */
   font-style: normal;
 }
 
 /* Regular Italic */
 @font-face {
-  font-family: 'CircularStd';
-  src: url('/src/assets/fonts/CircularStd/CircularStd-BookItalic.woff2') format('woff2');
+  font-family: "CircularStd";
+  src: url("/src/assets/fonts/CircularStd/CircularStd-BookItalic.woff2")
+    format("woff2");
   font-weight: 400;
   font-style: italic;
 }
 
 /* Medium */
 @font-face {
-  font-family: 'CircularStd';
-  src: url('/src/assets/fonts/CircularStd/CircularStd-Medium.woff2') format('woff2');
+  font-family: "CircularStd";
+  src: url("/src/assets/fonts/CircularStd/CircularStd-Medium.woff2")
+    format("woff2");
   font-weight: 500;
   font-style: normal;
 }
 
 /* Medium Italic */
 @font-face {
-  font-family: 'CircularStd';
-  src: url('/src/assets/fonts/CircularStd/CircularStd-MediumItalic.woff2') format('woff2');
+  font-family: "CircularStd";
+  src: url("/src/assets/fonts/CircularStd/CircularStd-MediumItalic.woff2")
+    format("woff2");
   font-weight: 500;
   font-style: italic;
 }
 
 /* Bold */
 @font-face {
-  font-family: 'CircularStd';
-  src: url('/src/assets/fonts/CircularStd/CircularStd-Bold.woff2') format('woff2');
+  font-family: "CircularStd";
+  src: url("/src/assets/fonts/CircularStd/CircularStd-Bold.woff2")
+    format("woff2");
   font-weight: 700; /* Bold weight */
   font-style: normal;
 }
 
 /* Bold Italic */
 @font-face {
-  font-family: 'CircularStd';
-  src: url('/src/assets/fonts/CircularStd/CircularStd-BoldItalic.woff2') format('woff2');
+  font-family: "CircularStd";
+  src: url("/src/assets/fonts/CircularStd/CircularStd-BoldItalic.woff2")
+    format("woff2");
   font-weight: 700;
   font-style: italic;
 }
 
 /* Black */
 @font-face {
-  font-family: 'CircularStd';
-  src: url('/src/assets/fonts/CircularStd/CircularStd-Black.woff2') format('woff2');
+  font-family: "CircularStd";
+  src: url("/src/assets/fonts/CircularStd/CircularStd-Black.woff2")
+    format("woff2");
   font-weight: 900; /* Black weight */
   font-style: normal;
 }
 
 /* Black Italic */
 @font-face {
-  font-family: 'CircularStd';
-  src: url('/src/assets/fonts/CircularStd/CircularStd-BlackItalic.woff2') format('woff2');
+  font-family: "CircularStd";
+  src: url("/src/assets/fonts/CircularStd/CircularStd-BlackItalic.woff2")
+    format("woff2");
   font-weight: 900;
   font-style: italic;
 }
 
 :root {
-  --font-orbitron: 'Orbitron', sans-serif;
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-circular-std: 'CircularStd', sans-serif;
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-circular-std: "CircularStd", sans-serif;
 }

@@ -1,38 +1,128 @@
-import { InputAdornment, Stack, Typography } from '@mui/material';
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { InputAdornment } from "@mui/material";
+import {
+  type ComponentPropsWithoutRef,
+  FocusEventHandler,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+} from "react";
+import { TextFieldCustom } from "./styled";
+import { theme } from "@styles/theme";
 
-import { TextFieldCustom } from './styled';
-import { cn } from '@utils/index';
-
-interface InputProps extends Omit<ComponentPropsWithoutRef<typeof TextFieldCustom>, 'variant' | 'hiddenLabel'> {
-  message?: string;
-  noHint?: boolean;
+export interface InputProps
+  extends Omit<
+    ComponentPropsWithoutRef<typeof TextFieldCustom>,
+    "variant" | "hiddenLabel" | "onChange"
+  > {
+  height?: number;
+  fullWidth?: boolean;
+  onValuesChange?: (val?: string | number) => void;
+  onBlur?:
+    | FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
+    | undefined;
+  onChange?: (val?: string | number) => void;
+  readOnly?: boolean;
+  bordered?: boolean;
+  disabled?: boolean;
 }
 
-// Input component
-const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { size = 'medium', noHint, error = false, message, className, startAdornment, ...rest } = props;
+const BaseInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
+  const {
+    value = undefined,
+    onChange = () => {},
+    fullWidth = true,
+    className,
+    startAdornment,
+    height = 32,
+    onValuesChange = () => {},
+    onBlur = () => {},
+    onFocus = () => {},
+    readOnly = false,
+    bordered = true,
+    disabled = false,
+    style,
+    onKeyDown = () => {},
+    ...rest
+  } = props;
+
+  const innerRef = useRef<HTMLInputElement>(null);
+  useImperativeHandle(ref, () => innerRef.current as HTMLInputElement);
+
+  const inputProps = {
+    ...(value !== undefined ? { value } : {}),
+    fullWidth,
+    readOnly,
+    disabled,
+    ...rest,
+  };
+
+  const noneBorderSx =
+    !bordered || readOnly
+      ? {
+          backgroundColor: "#ffffff",
+          border: "1px solid",
+          borderColor: "transparent",
+          "&::after": {
+            border: "unset",
+          },
+          "&:hover": {
+            "&::after": {
+              border: "unset",
+            },
+            "&::focus": {
+              border: "unset",
+            },
+          },
+          "&.Mui-readOnly.MuiInputBase-readOnly": {
+            border: "unset",
+            borderWith: "none",
+          },
+        }
+      : {};
 
   return (
-    <Stack direction='column' pb={noHint ? 0 : 3.5} gap={noHint ? 0 : 1}>
-      <TextFieldCustom
-        size={size}
-        ref={ref}
-        className={cn(className)}
-        startAdornment={startAdornment ? <InputAdornment position='start'>{startAdornment}</InputAdornment> : null}
-        {...rest}
-        sx={{ gap: 0.5, ...rest.sx }}
-      />
-      <Typography
-        sx={{
-          fontWeight: 500,
-          color: error ? 'error.500' : '#767272',
-        }}
-        variant='label-small'>
-        {message}
-      </Typography>
-    </Stack>
+    <TextFieldCustom
+      inputRef={innerRef}
+      className={className}
+      startAdornment={
+        startAdornment ? (
+          <InputAdornment position="start">{startAdornment}</InputAdornment>
+        ) : null
+      }
+      onChange={(e) => {
+        onChange(e.target.value);
+        onValuesChange(e.target.value);
+      }}
+      onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
+        if (readOnly) return;
+        const value = e.target.value;
+        const trimmedValue = value.replace(/\s+/g, " ").trim();
+        onChange(trimmedValue);
+        onBlur(e);
+      }}
+      {...inputProps}
+      sx={{
+        gap: 0.5,
+        height,
+        fontSize: "12px",
+        ...rest.sx,
+        ...noneBorderSx,
+      }}
+      onFocus={(e) => {
+        if (readOnly) return;
+        innerRef.current?.select();
+        onFocus(e);
+      }}
+      autoComplete="off"
+      style={{
+        borderColor: theme.palette.interaction.border.neutralNormal,
+        ...style,
+      }}
+      onKeyDown={onKeyDown}
+    />
   );
 });
 
-export default Input;
+export default BaseInput;
+
+BaseInput.displayName = "BaseInput";

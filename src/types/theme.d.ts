@@ -1,129 +1,270 @@
-import { TypographyStyleOptions } from '@mui/material/styles/createTypography';
-import { PaletteColorOptions } from '@mui/material/styles';
-import { CSSProperties } from 'react';
+import { type TypographyStyleOptions } from "@mui/material/styles/createTypography";
+import { type CSSProperties } from "react";
+interface CustomBackgroundColor {
+  strong: string;
+  muted: string;
+  onSubtle: string;
+  subtle: string;
+  surface: string;
+}
 
-declare module '@mui/material/styles' {
+declare module "@mui/material/styles" {
   interface TypographyVariants {
-    'display-large': CSSProperties;
-    'display-medium': CSSProperties;
-    'display-small': CSSProperties;
+    "hero-large": CSSProperties;
+    "hero-medium": CSSProperties;
 
-    'headline-large': CSSProperties;
-    'headline-medium': CSSProperties;
-    'headline-small': CSSProperties;
+    "header-4x-large": CSSProperties;
+    "header-3x-large": CSSProperties;
+    "header-x-large": CSSProperties;
+    "header-large": CSSProperties;
+    "header-medium": CSSProperties;
+    "header-small": CSSProperties;
 
-    'title-large': CSSProperties;
-    'title-medium': CSSProperties;
-    'title-small': CSSProperties;
-
-    'body-large': CSSProperties;
-    'body-regular': CSSProperties;
-    'body-light': CSSProperties;
-    'body-medium': CSSProperties;
-    'body-small': CSSProperties;
-
-    'label-large': CSSProperties;
-    'label-medium': CSSProperties;
-    'label-small': CSSProperties;
+    "body-large": CSSProperties;
+    "body-medium": CSSProperties;
+    "body-small": CSSProperties;
+    "body-x-small": CSSProperties;
+    "body-strong-large": CSSProperties;
+    "body-strong-medium": CSSProperties;
+    "body-strong-small": CSSProperties;
+    "body-strong-2x-small": CSSProperties;
   }
   interface TypographyVariantsOptions {
-    'display-large': TypographyStyleOptions;
-    'display-medium': TypographyStyleOptions;
-    'display-small': TypographyStyleOptions;
+    "hero-large": TypographyStyleOptions;
+    "hero-medium": TypographyStyleOptions;
 
-    'headline-large': TypographyStyleOptions;
-    'headline-medium': TypographyStyleOptions;
-    'headline-small': TypographyStyleOptions;
+    "header-4x-large": TypographyStyleOptions;
+    "header-3x-large": TypographyStyleOptions;
+    "header-x-large": TypographyStyleOptions;
+    "header-large": TypographyStyleOptions;
+    "header-medium": TypographyStyleOptions;
+    "header-small": TypographyStyleOptions;
 
-    'title-large': TypographyStyleOptions;
-    'title-medium': TypographyStyleOptions;
-    'title-small': TypographyStyleOptions;
-
-    'body-large': TypographyStyleOptions;
-    'body-regular': TypographyStyleOptions;
-    'body-light': TypographyStyleOptions;
-    'body-medium': TypographyStyleOptions;
-    'body-small': TypographyStyleOptions;
-
-    'label-large': TypographyStyleOptions;
-    'label-medium': TypographyStyleOptions;
-    'label-small': TypographyStyleOptions;
+    "body-large": TypographyStyleOptions;
+    "body-medium": TypographyStyleOptions;
+    "body-small": TypographyStyleOptions;
+    "body-x-small": TypographyStyleOptions;
+    "body-strong-large": TypographyStyleOptions;
+    "body-strong-medium": TypographyStyleOptions;
+    "body-strong-small": TypographyStyleOptions;
+    "body-strong-2x-small": TypographyStyleOptions;
   }
   interface BreakpointOverrides {
-    '2xs': true;
-    '2xl': true;
-    '3xl': true;
+    "2xs": true;
+    "2xl": true;
+    "3xl": true;
     tablet: true;
   }
 
-  interface PaletteColor {
-    '50': string;
-    '100': string;
-    '200': string;
-    '300': string;
-    '400': string;
+  //content color interface
+  interface TypeText {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+    disabled: string;
+    neutral: ContentColor;
+    informative: ContentColor;
+    positive: ContentColor;
+    warning: ContentColor;
+    negative: ContentColor;
+    brand: ContentColor;
+  }
+
+  interface PaletteBackground {
+    inverted: string;
+    readonly: string;
+  }
+
+  interface CustomColor {
+    "-4": string;
+    "-3": string;
+    "-2": string;
+    "-1": string;
+    "0": string;
     main: string;
-    '500'?: string;
-    '600': string;
-    '700': string;
-    '800': string;
-    '900': string;
+    "+1": string;
+    "+2": string;
+    "+3": string;
+    "+4": string;
+    "+5": string;
+    "+6": string;
+    "+7": string;
+    "+8": string;
+  }
+
+  type BorderActionColor = {
+    strong: string;
+    subtle: string;
+  };
+
+  type ContentColor = {
+    primary: string;
+    secondary: string;
+  };
+
+  interface CustomBorderColor {
+    primary: string;
+    secondary: string;
+    disabled: string;
+    neutral: BorderActionColor;
+    informative: BorderActionColor;
+    positive: BorderActionColor;
+    warning: BorderActionColor;
+    negative: BorderActionColor;
+    brand: BorderActionColor;
+  }
+
+  interface CustomActionColor {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+    disabled: string;
+    neutral: ContentColor;
+    informative: ContentColor;
+    positive: ContentColor;
+    warning: ContentColor;
+    negative: ContentColor;
+    brand: ContentColor;
+  }
+
+  interface CustomInteractionColor {
+    normal: string;
+    hover: string;
+    active: string;
+    selected?: string;
+    subtleNormal: string;
+    subtleHover: string;
+    subtleActive: string;
+    subtleSelected?: string;
   }
 
   interface Palette {
-    brown: PaletteColor;
-    dark: PaletteColor;
-    light: PaletteColor;
-    bgColor: {
-      primary: string;
+    brand: CustomColor;
+    neutral: CustomColor;
+    positive: CustomColor;
+    warn: CustomColor;
+    negative: CustomColor;
+    border: CustomBorderColor;
+    background: {
+      default: string;
+      inverted: string;
+      readonly: string;
+      neutral: CustomBackgroundColor;
+      informative: CustomBackgroundColor;
+      positive: CustomBackgroundColor;
+      warning: CustomBackgroundColor;
+      negative: CustomBackgroundColor;
+      brand: CustomBackgroundColor;
+    };
+    interaction: {
+      default: CustomInteractionColor;
+      neutral: CustomInteractionColor;
+      alert: CustomInteractionColor;
+      disabled: CustomInteractionColor;
+      border: {
+        normal: string;
+        hover: string;
+        active: string;
+        selected: string;
+        neutralNormal: string;
+        neutralHover: string;
+        neutralActive: string;
+        neutralSelected?: string;
+        alert: string;
+      };
     };
   }
 
   interface PaletteOptions {
-    brown: PaletteColorOptions;
-    dark: PaletteColorOptions;
-    light: PaletteColorOptions;
-    bgColor: {
-      primary: string;
+    border: CustomBorderColor;
+    background: {
+      default: string;
+      inverted: string;
+      readonly: string;
+      neutral: CustomBackgroundColor;
+      informative: CustomBackgroundColor;
+      positive: CustomBackgroundColor;
+      warning: CustomBackgroundColor;
+      negative: CustomBackgroundColor;
+      brand: CustomBackgroundColor;
+    };
+    brand: CustomColor;
+    neutral: CustomColor;
+    positive: CustomColor;
+    negative: CustomColor;
+    warn: CustomColor;
+    interaction: {
+      default: CustomInteractionColor;
+      neutral: CustomInteractionColor;
+      alert: CustomInteractionColor;
+      disabled: CustomInteractionColor;
+      border: {
+        normal: string;
+        hover: string;
+        active: string;
+        selected: string;
+        neutralNormal: string;
+        neutralHover: string;
+        neutralActive: string;
+        neutralSelected?: string;
+        alert: string;
+      };
     };
   }
 }
 
-declare module '@mui/material/Typography' {
+declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
-    'display-large': true;
-    'display-medium': true;
-    'display-small': true;
+    "hero-large": true;
+    "hero-medium": true;
 
-    'headline-large': true;
-    'headline-medium': true;
-    'headline-small': true;
+    "header-4x-large": true;
+    "header-3x-large": true;
+    "header-x-large": true;
+    "header-large": true;
+    "header-medium": true;
+    "header-small": true;
 
-    'title-large': true;
-    'title-medium': true;
-    'title-small': true;
-
-    'body-large': true;
-    'body-regular': true;
-    'body-light': true;
-    'body-medium': true;
-    'body-small': true;
-    'body-xs': true;
-
-    'label-large': true;
-    'label-medium': true;
-    'label-small': true;
-    'label-xs': true;
-    'label-xl': true;
+    "body-large": true;
+    "body-medium": true;
+    "body-small": true;
+    "body-x-small": true;
+    "body-strong-large": true;
+    "body-strong-medium": true;
+    "body-strong-small": true;
+    "body-strong-2x-small": true;
   }
 }
 
-declare module '@mui/material/Button' {
-  interface ButtonPropsVariantOverrides {
-    contained: false;
-    primary: true;
-    secondary: true;
-    outlined: true;
-    icon: true;
+declare module "@mui/material/styles/createPalette" {
+  interface TypeBackground {
+    inverted: string;
+    readonly: string;
+    neutral: CustomBackgroundColor;
+    informative: CustomBackgroundColor;
+    positive: CustomBackgroundColor;
+    warning: CustomBackgroundColor;
+    negative: CustomBackgroundColor;
+    brand: CustomBackgroundColor;
+  }
+}
+
+declare module "@mui/material/Button" {
+  interface ButtonPropsColorOverrides {
+    brand: true;
+    neutral: true;
+    positive: true;
+    negative: true;
+    warn: true;
+  }
+}
+
+declare module "@mui/material/Chip" {
+  interface ChipPropsColorOverrides {
+    brand: true;
+    neutral: true;
+    positive: true;
+    warn: true;
+    negative: true;
   }
 }

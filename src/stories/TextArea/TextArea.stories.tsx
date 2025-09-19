@@ -14,6 +14,6 @@ export default meta;
 
 export const Default = {
   args: {
-    width:'800px'
+    width: "800px",
   },
 };

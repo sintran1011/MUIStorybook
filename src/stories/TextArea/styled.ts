@@ -1,51 +1,47 @@
-"use client";
-
-import { Input } from "@mui/material";
+import { TextareaAutosize } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const TextFieldCustom = styled(Input)(() => ({
-  backgroundColor: "#FFFFFF0A",
-  fontFamily: "var(--font-montserrat)",
-  borderRadius: "4px",
-  color: "white",
-  padding: "12px 16px",
-  height: 52,
-  "& input": {
-    "&::placeholder": {
-      fontWeight: 400,
-      fontSize: 16,
-    },
+const TextAreaCustom = styled(TextareaAutosize)(({ theme }) => ({
+  //text input
+  fontFamily: "var(--font-inter)",
+  color: theme.palette.text.primary,
+  fontSize: "12px",
+  lineHeight: "20px",
+  fontWeight: 450,
+  //
+  border: "1px solid",
+  width: "100%",
+  backgroundColor: "#ffffff",
+  borderRadius: theme.shape.borderRadius,
+  padding: "8px 12px",
+  transition: "border-color 0.3s, box-shadow 0.3s",
+  "&::placeholder": {
+    fontWeight: 450,
+    fontSize: "12px",
+    color: theme.palette.text.disabled,
   },
-  "&.MuiInput-root:not(.Mui-disabled, .Mui-error)::after": {
-    borderWidth: 1,
-    borderColor: "#FFFFFF",
+  "&:focus": {
+    borderColor: theme.palette.brand.main,
+    boxShadow: `0 0 0 1px ${theme.palette.brand.main}`,
+    outline: "none",
   },
-  "&.MuiInputBase-sizeSmall": {
-    padding: "10px 12px",
-    height: 40,
+  "&[readonly]:focus": {
+    boxShadow: "none",
+    borderColor: theme.palette.border.primary,
   },
-  "&.MuiInput-root .Mui-disabled": {
-    WebkitTextFillColor: "#ffffffbf",
+  "&.none-shadow:focus": {
+    boxShadow: "none",
   },
-  "&::before": {
-    borderColor: "transparent",
+  "&:disabled": {
+    backgroundColor: `${theme.palette.interaction.disabled.subtleNormal} !important`,
+    borderColor: `${theme.palette.border.disabled} !important`,
+    color: theme.palette.text.disabled,
+    cursor: "not-allowed",
   },
-  "&:hover": {
-    "&:not(.Mui-disabled, .Mui-error)": {
-      "&::after": {
-        borderWidth: 1,
-        borderColor: "#FFFFFF",
-      },
-      "&::focus": {
-        borderColor: "#FFFFFF",
-        borderWidth: 1,
-      },
-      "&::before": {
-        borderWidth: 0,
-        borderColor: "#ffffff80",
-      },
-    },
+  "&[readonly]": {
+    backgroundColor: theme.palette.background.readonly,
+    color: theme.palette.text.secondary,
   },
 }));
 
-export { TextFieldCustom };
+export { TextAreaCustom };

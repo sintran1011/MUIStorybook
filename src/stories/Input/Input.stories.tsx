@@ -1,7 +1,7 @@
 import { Meta } from "@storybook/react";
 import Input from ".";
 import { Stack } from "@mui/material";
-import StyledInputNumber from "./StyledInputNumber";
+import InputNumber from "./InputNumber";
 
 const meta: Meta<typeof Input> = {
   title: "Quoxent/Input",
@@ -17,8 +17,8 @@ export default meta;
 export const Default = () => {
   return (
     <Stack flexDirection={"row"} gap={6}>
-      <Input placeholder="Input Text" noHint />
-      <StyledInputNumber type="number" placeholder="Input Number" />
+      <Input placeholder="Input Text" />
+      <InputNumber type="number" placeholder="Input Number" />
     </Stack>
   );
 };
