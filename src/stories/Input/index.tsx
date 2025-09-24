@@ -110,7 +110,10 @@ const BaseInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         onFocus(e);
       }}
       autoComplete="off"
-      style={{ borderColor: theme.palette.interaction.border.neutralNormal, ...style }}
+      style={{
+        borderColor: bordered ? theme.palette.interaction.border.neutralNormal : 'transparent',
+        ...style,
+      }}
       onKeyDown={onKeyDown}
     />
   );

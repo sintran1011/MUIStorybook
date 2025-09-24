@@ -17,6 +17,23 @@ const meta: Meta<typeof BasicMenu> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    anchorEl: {
+      description: 'Element which user click to show menu, use `event.currentTarget`',
+    },
+    open: {
+      description: 'Controled state to show Menu, should use `Boolean(anchorEl)`',
+    },
+    onClose: {
+      description: 'Function closed Menu, just simple set `AnchorEl` to `null`',
+    },
+    menuItems: {
+      description: 'List `Items` to render Menu Item',
+    },
+    menuProps: {
+      description: 'Optional props add to Menu, extends from Menu MUI',
+    },
+  },
 };
 
 export default meta;
@@ -35,111 +52,39 @@ export const Default = () => {
 
   const MENU_ITEMS = [
     {
-      label: (
-        <Typography
-          color="white"
-          sx={{ fontSize: '14px', lineHeight: '20px' }}
-          variant="body-medium"
-        >
-          Edit
-        </Typography>
-      ),
+      label: 'Edit',
       onClick: () => {
         console.log('click');
       },
       icon: <ModeIcon sx={{ color: theme.palette.brand.main }} />,
-      menuItemProps: {
-        sx: {
-          ':hover': {
-            backgroundColor: '#332D2D',
-          },
-        },
-      },
     },
     {
-      label: (
-        <Typography
-          color="white"
-          sx={{ fontSize: '14px', lineHeight: '20px' }}
-          variant="body-medium"
-        >
-          Charge
-        </Typography>
-      ),
+      label: 'Charge',
       onClick: () => {
         console.log('click');
       },
       icon: <BoltIcon sx={{ color: theme.palette.brand.main }} />,
-      menuItemProps: {
-        sx: {
-          ':hover': {
-            backgroundColor: '#332D2D',
-          },
-        },
-      },
     },
     {
-      label: (
-        <Typography
-          color="white"
-          sx={{ fontSize: '14px', lineHeight: '20px' }}
-          variant="body-medium"
-        >
-          Funding
-        </Typography>
-      ),
+      label: 'Funding',
       onClick: () => {
         console.log('click');
       },
       icon: <MonetizationOnIcon sx={{ color: theme.palette.brand.main }} />,
-      menuItemProps: {
-        sx: {
-          ':hover': {
-            backgroundColor: '#332D2D',
-          },
-        },
-      },
     },
     {
-      label: (
-        <Typography
-          color="white"
-          sx={{ fontSize: '14px', lineHeight: '20px' }}
-          variant="body-medium"
-        >
-          Selling
-        </Typography>
-      ),
+      label: 'Selling',
       onClick: () => {
         console.log('click');
       },
       icon: <SellIcon sx={{ color: theme.palette.brand.main }} />,
-      menuItemProps: {
-        sx: {
-          ':hover': {
-            backgroundColor: '#332D2D',
-          },
-        },
-      },
     },
   ];
 
   return (
     <>
       <Button onClick={handleClick}>Open</Button>
-      <BasicMenu
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        menuProps={{
-          sx: {
-            '& .MuiPaper-root': {
-              backgroundColor: '#1C1919',
-            },
-          },
-        }}
-        menuItems={MENU_ITEMS}
-      />
+      <BasicMenu anchorEl={anchorEl} open={open} onClose={handleClose} menuItems={MENU_ITEMS} />
     </>
   );
 };
@@ -148,122 +93,54 @@ Default.parameters = {
   docs: {
     source: {
       code: `
-const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-const open = Boolean(anchorEl);
+ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
-const handleClose = () => {
-  setAnchorEl(null);
-};
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-  setAnchorEl(event.currentTarget);
-};
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-const MENU_ITEMS = [
-  {
-    label: (
-      <Typography
-        color="white"
-        sx={{ fontSize: "14px", lineHeight: "20px" }}
-        variant="body-medium"
-      >
-        Edit
-      </Typography>
-    ),
-    onClick: () => {
-      console.log("click");
-    },
-    icon: <ModeIcon />,
-    menuItemProps: {
-      sx: {
-        ":hover": {
-          backgroundColor: "#332D2D",
-        },
+  const MENU_ITEMS = [
+    {
+      label: 'Edit',
+      onClick: () => {
+        console.log('click');
       },
+      icon: <ModeIcon sx={{ color: theme.palette.brand.main }} />,
     },
-  },
-  {
-    label: (
-      <Typography
-        color="white"
-        sx={{ fontSize: "14px", lineHeight: "20px" }}
-        variant="body-medium"
-      >
-        Charge
-      </Typography>
-    ),
-    onClick: () => {
-      console.log("click");
-    },
-    icon: <BoltIcon />,
-    menuItemProps: {
-      sx: {
-        ":hover": {
-          backgroundColor: "#332D2D",
-        },
+    {
+      label: 'Charge',
+      onClick: () => {
+        console.log('click');
       },
+      icon: <BoltIcon sx={{ color: theme.palette.brand.main }} />,
     },
-  },
-  {
-    label: (
-      <Typography
-        color="white"
-        sx={{ fontSize: "14px", lineHeight: "20px" }}
-        variant="body-medium"
-      >
-        Funding
-      </Typography>
-    ),
-    onClick: () => {
-      console.log("click");
-    },
-    icon: <MonetizationOnIcon />,
-    menuItemProps: {
-      sx: {
-        ":hover": {
-          backgroundColor: "#332D2D",
-        },
+    {
+      label: 'Funding',
+      onClick: () => {
+        console.log('click');
       },
+      icon: <MonetizationOnIcon sx={{ color: theme.palette.brand.main }} />,
     },
-  },
-  {
-    label: (
-      <Typography
-        color="white"
-        sx={{ fontSize: "14px", lineHeight: "20px" }}
-        variant="body-medium"
-      >
-        Selling
-      </Typography>
-    ),
-    onClick: () => {
-      console.log("click");
-    },
-    icon: <SellIcon />,
-    menuItemProps: {
-      sx: {
-        ":hover": {
-          backgroundColor: "#332D2D",
-        },
+    {
+      label: 'Selling',
+      onClick: () => {
+        console.log('click');
       },
+      icon: <SellIcon sx={{ color: theme.palette.brand.main }} />,
     },
-  },
-];
+  ];
 
-<Button onClick={handleClick}>Open</Button>
-<BasicMenu
-  anchorEl={anchorEl}
-  open={open}
-  onClose={handleClose}
-  menuProps={{
-    sx: {
-      "& .MuiPaper-root": {
-        backgroundColor: "#1C1919",
-      },
-    },
-  }}
-  menuItems={MENU_ITEMS}
-/>;
+  return (
+    <>
+      <Button onClick={handleClick}>Open</Button>
+      <BasicMenu anchorEl={anchorEl} open={open} onClose={handleClose} menuItems={MENU_ITEMS} />
+    </>
+  );
       `,
     },
   },

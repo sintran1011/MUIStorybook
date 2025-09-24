@@ -37,7 +37,7 @@ export const Playground: Story = {
   args: { height: 32, fullWidth: false, disabled: false, readOnly: false, bordered: true },
 };
 
-export const Default = () => {
+export const Gallery = () => {
   return (
     <Stack flexDirection={'row'} gap={6}>
       <BaseInput placeholder="Input Text" />
@@ -46,13 +46,13 @@ export const Default = () => {
   );
 };
 
-Default.parameters = {
+Gallery.parameters = {
   docs: {
     source: {
       code: `
-<Input placeholder="Input Text" noHint />
+<Input placeholder="Input Text" />
 
-<StyledInputNumber type="number" placeholder="Input Number" noHint />
+<StyledInputNumber type="number" placeholder="Input Number" />
       `,
     },
   },
