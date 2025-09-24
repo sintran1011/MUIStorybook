@@ -1,5 +1,5 @@
 import { Accordion } from '@mui/material';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import BasicAccordion from '.';
 
 const meta: Meta<typeof Accordion> = {
@@ -9,6 +9,16 @@ const meta: Meta<typeof Accordion> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    title: {
+      control: { type: 'text' },
+      description: 'Title of Accordion',
+    },
+    content: {
+      control: { type: 'text' },
+      description: 'Content of Accordion',
+    },
+  },
 };
 
 export default meta;

@@ -1,9 +1,8 @@
-import { Button as MUIButton } from "@mui/material";
-import { ComponentPropsWithoutRef, forwardRef } from "react";
-import { CustomButton } from "./styled";
+import { Button as MUIButton } from '@mui/material';
+import { ComponentPropsWithoutRef, forwardRef } from 'react';
+import { CustomButton } from './styled';
 
-export interface ButtonBaseProps
-  extends ComponentPropsWithoutRef<typeof MUIButton> {
+export interface ButtonBaseProps extends ComponentPropsWithoutRef<typeof MUIButton> {
   fullWidth?: boolean;
   className?: string;
   loading?: boolean;
@@ -19,13 +18,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) => {
     children,
     className,
     loading = false,
-    size = "medium",
+    size = 'medium',
     fullWidth = false,
     disabled,
     onClick,
     component,
-    variant = "contained",
-    width = "fit-content",
+    variant = 'contained',
+    width = 'fit-content',
     ...rest
   } = props;
 
@@ -36,7 +35,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) => {
       variant={variant}
       disabled={disabled}
       size={size}
-      sx={{ width: fullWidth ? "100%" : width, cursor: "pointer" }}
+      sx={{ width: fullWidth ? '100%' : width, cursor: 'pointer' }}
       ref={ref}
       component={component}
       onClick={onClick}
@@ -48,6 +47,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) => {
   );
 });
 
-Button.displayName = "Button";
+Button.displayName = 'Button';
 
 export default Button;

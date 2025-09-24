@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Stack } from '@mui/material';
 import BaseInput from '.';
 import InputNumber from './InputNumber';
@@ -10,9 +10,32 @@ const meta: Meta<typeof BaseInput> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    height: {
+      description: 'height of Input',
+    },
+    fullWidth: {
+      description: 'If `true` , width input will be 100%',
+    },
+    disabled: {
+      description: 'Change input to disabled state',
+    },
+    readOnly: {
+      description: 'Change input to readonly state',
+    },
+    bordered: {
+      description: 'Change input to `non-border` style',
+    },
+  },
 };
 
 export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Playground: Story = {
+  args: { height: 32, fullWidth: false, disabled: false, readOnly: false, bordered: true },
+};
 
 export const Default = () => {
   return (

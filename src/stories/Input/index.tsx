@@ -1,25 +1,23 @@
-import { InputAdornment } from "@mui/material";
+import { InputAdornment } from '@mui/material';
 import {
   type ComponentPropsWithoutRef,
   FocusEventHandler,
   forwardRef,
   useImperativeHandle,
   useRef,
-} from "react";
-import { TextFieldCustom } from "./styled";
-import { theme } from "@styles/theme";
+} from 'react';
+import { TextFieldCustom } from './styled';
+import { theme } from '@styles/theme';
 
 export interface InputProps
   extends Omit<
     ComponentPropsWithoutRef<typeof TextFieldCustom>,
-    "variant" | "hiddenLabel" | "onChange"
+    'variant' | 'hiddenLabel' | 'onChange'
   > {
   height?: number;
   fullWidth?: boolean;
   onValuesChange?: (val?: string | number) => void;
-  onBlur?:
-    | FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>
-    | undefined;
+  onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined;
   onChange?: (val?: string | number) => void;
   readOnly?: boolean;
   bordered?: boolean;
@@ -59,23 +57,23 @@ const BaseInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const noneBorderSx =
     !bordered || readOnly
       ? {
-          backgroundColor: "#ffffff",
-          border: "1px solid",
-          borderColor: "transparent",
-          "&::after": {
-            border: "unset",
+          backgroundColor: '#ffffff',
+          border: '1px solid',
+          borderColor: 'transparent',
+          '&::after': {
+            border: 'unset',
           },
-          "&:hover": {
-            "&::after": {
-              border: "unset",
+          '&:hover': {
+            '&::after': {
+              border: 'unset',
             },
-            "&::focus": {
-              border: "unset",
+            '&::focus': {
+              border: 'unset',
             },
           },
-          "&.Mui-readOnly.MuiInputBase-readOnly": {
-            border: "unset",
-            borderWith: "none",
+          '&.Mui-readOnly.MuiInputBase-readOnly': {
+            border: 'unset',
+            borderWith: 'none',
           },
         }
       : {};
@@ -85,18 +83,16 @@ const BaseInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       inputRef={innerRef}
       className={className}
       startAdornment={
-        startAdornment ? (
-          <InputAdornment position="start">{startAdornment}</InputAdornment>
-        ) : null
+        startAdornment ? <InputAdornment position="start">{startAdornment}</InputAdornment> : null
       }
-      onChange={(e) => {
+      onChange={e => {
         onChange(e.target.value);
         onValuesChange(e.target.value);
       }}
       onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
         if (readOnly) return;
         const value = e.target.value;
-        const trimmedValue = value.replace(/\s+/g, " ").trim();
+        const trimmedValue = value.replace(/\s+/g, ' ').trim();
         onChange(trimmedValue);
         onBlur(e);
       }}
@@ -104,20 +100,17 @@ const BaseInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       sx={{
         gap: 0.5,
         height,
-        fontSize: "12px",
+        fontSize: '12px',
         ...rest.sx,
         ...noneBorderSx,
       }}
-      onFocus={(e) => {
+      onFocus={e => {
         if (readOnly) return;
         innerRef.current?.select();
         onFocus(e);
       }}
       autoComplete="off"
-      style={{
-        borderColor: theme.palette.interaction.border.neutralNormal,
-        ...style,
-      }}
+      style={{ borderColor: theme.palette.interaction.border.neutralNormal, ...style }}
       onKeyDown={onKeyDown}
     />
   );
@@ -125,4 +118,4 @@ const BaseInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
 export default BaseInput;
 
-BaseInput.displayName = "BaseInput";
+BaseInput.displayName = 'BaseInput';
