@@ -3,6 +3,7 @@ import {
   type ComponentPropsWithoutRef,
   FocusEventHandler,
   forwardRef,
+  useEffect,
   useImperativeHandle,
   useRef,
 } from 'react';
@@ -22,6 +23,7 @@ export interface InputProps
   readOnly?: boolean;
   bordered?: boolean;
   disabled?: boolean;
+  autoFocus?: boolean;
 }
 
 const BaseInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
@@ -38,6 +40,7 @@ const BaseInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     readOnly = false,
     bordered = true,
     disabled = false,
+    autoFocus = false,
     style,
     onKeyDown = () => {},
     ...rest
@@ -45,6 +48,12 @@ const BaseInput = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
   const innerRef = useRef<HTMLInputElement>(null);
   useImperativeHandle(ref, () => innerRef.current as HTMLInputElement);
+
+  useEffect(() => {
+    if (autoFocus && innerRef.current) {
+      innerRef.current.focus();
+    }
+  }, [autoFocus]);
 
   const inputProps = {
     ...(value !== undefined ? { value } : {}),

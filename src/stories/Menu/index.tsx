@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Menu, MenuItem, MenuProps, MenuItemProps } from "@mui/material";
+import * as React from 'react';
+import { Menu, MenuItem, MenuProps, MenuItemProps } from '@mui/material';
 
 export interface MenuItems {
   label: string | React.ReactNode;
@@ -9,12 +9,13 @@ export interface MenuItems {
   disabled?: boolean;
 }
 
-interface GenericMenuProps {
+export interface GenericMenuProps {
   anchorEl: HTMLElement | null;
   open: boolean;
   onClose: () => void;
   menuItems: MenuItems[];
-  menuProps?: Omit<MenuProps, "open">;
+  menuProps?: Omit<MenuProps, 'open'>;
+  disabledClosedOnClick?: boolean;
 }
 
 const BasicMenu = ({
@@ -23,6 +24,7 @@ const BasicMenu = ({
   onClose,
   menuItems,
   menuProps,
+  disabledClosedOnClick = false,
 }: GenericMenuProps) => {
   return (
     <Menu
@@ -30,36 +32,38 @@ const BasicMenu = ({
       open={open}
       onClose={onClose}
       sx={{
-        "& .MuiPaper-root": {
-          backgroundColor: "white",
-        },
-        "& .MuiMenu-list": {
-          maxWidth: "fit-content",
+        '& .MuiPaper-root': {
+          backgroundColor: 'white',
         },
       }}
       {...menuProps}
+      slotProps={{ list: { autoFocusItem: false } }}
     >
-      {menuItems.map((item, index) => (
-        <MenuItem
-          key={index}
-          disabled={item?.disabled}
-          onClick={() => {
-            item.onClick();
-            onClose();
-          }}
-          {...item.menuItemProps}
-          sx={{
-            fontSize: "14px",
-          }}
-        >
-          {item.icon && <span style={{ marginRight: 8 }}>{item.icon}</span>}
-          {item.label}
-        </MenuItem>
-      ))}
+      {menuItems.map((item, index) => {
+        return (
+          <MenuItem
+            key={index}
+            disabled={item?.disabled}
+            onClick={() => {
+              item.onClick();
+              if (disabledClosedOnClick) return;
+              onClose();
+            }}
+            {...item.menuItemProps}
+            sx={{
+              fontSize: '14px',
+              ...item.menuItemProps?.sx,
+            }}
+          >
+            {item.icon && <span style={{ marginRight: 8 }}>{item.icon}</span>}
+            {item.label}
+          </MenuItem>
+        );
+      })}
     </Menu>
   );
 };
 
 export default BasicMenu;
 
-BasicMenu.displayName = "BasicMenu";
+BasicMenu.displayName = 'BasicMenu';
