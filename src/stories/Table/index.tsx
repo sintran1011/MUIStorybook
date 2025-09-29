@@ -493,61 +493,68 @@ const BasicTable = <T extends Record<string, any>>(props: TableProps<T>) => {
 
   const renderFooter = () => {
     return showPagination ? (
-      <Stack flexDirection={'row'} justifyContent={'end'}>
-        <TableFooter sx={{ borderBottom: 0 }}>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={rowsPerPageOptions}
-              colSpan={colSpan || 5}
-              count={total}
-              rowsPerPage={size}
-              page={page}
-              slotProps={{
-                select: {
-                  sx: {
-                    border: `1px solid ${paletteColor.border.primary}`,
-                    borderRadius: '4px',
-                  },
-                  inputProps: {
-                    'aria-label': 'rows per page',
-                  },
-                  MenuProps: {
-                    slotProps: {
-                      paper: {
-                        sx: {
-                          color: 'text.primary',
-                          '& .MuiTablePagination-menuItem': {
-                            fontSize: '12px',
-                          },
-                          '& .MuiMenu-list': {
-                            padding: 0,
-                            '& .MuiTablePagination-menuItem.Mui-selected': {
-                              backgroundColor: 'brand.main',
-                              color: 'white',
-                              fontWeight: '600',
-                            },
+      <TableFooter
+        sx={{
+          position: 'sticky',
+          bottom: 0,
+          zIndex: 2,
+          backgroundColor: 'background.paper',
+          boxShadow: '0 -2px 6px rgba(0,0,0,0.08)',
+          borderBottom: 0,
+        }}
+      >
+        <TableRow>
+          <TablePagination
+            rowsPerPageOptions={rowsPerPageOptions}
+            colSpan={colSpan || 5}
+            count={total}
+            rowsPerPage={size}
+            page={page}
+            slotProps={{
+              select: {
+                sx: {
+                  border: `1px solid ${paletteColor.border.primary}`,
+                  borderRadius: '4px',
+                },
+                inputProps: {
+                  'aria-label': 'rows per page',
+                },
+                MenuProps: {
+                  slotProps: {
+                    paper: {
+                      sx: {
+                        color: 'text.primary',
+                        '& .MuiTablePagination-menuItem': {
+                          fontSize: '12px',
+                        },
+                        '& .MuiMenu-list': {
+                          padding: 0,
+                          '& .MuiTablePagination-menuItem.Mui-selected': {
+                            backgroundColor: 'brand.main',
+                            color: 'white',
+                            fontWeight: '600',
                           },
                         },
                       },
                     },
                   },
                 },
-              }}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              ActionsComponent={props => <TablePaginationActions {...props} />}
-              sx={{
-                borderBottom: 0,
+              },
+            }}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            ActionsComponent={props => <TablePaginationActions {...props} />}
+            sx={{
+              borderBottom: 0,
+              color: 'black',
+              fontFamily: 'var(--font-montserrat)',
+              '& .MuiTablePagination-selectIcon': {
                 color: 'black',
-                fontFamily: 'var(--font-montserrat)',
-                '& .MuiTablePagination-selectIcon': {
-                  color: 'black',
-                },
-              }}
-            />
-          </TableRow>
-        </TableFooter>
-      </Stack>
+              },
+            }}
+          />
+        </TableRow>
+      </TableFooter>
     ) : null;
   };
 
