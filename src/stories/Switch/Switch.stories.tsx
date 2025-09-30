@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Grid2 } from '@mui/material';
 import BasicSwitch from '.';
 
@@ -9,47 +9,27 @@ const meta: Meta<typeof BasicSwitch> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    label: {
+      description: 'Text label of switch',
+    },
+    value: {
+      description: '`Controlled Value` of switch',
+    },
+    controlLabelSx: {
+      description: '`Sx Props` to control layout of component',
+    },
+  },
 };
 
 export default meta;
 
-export const Default = () => {
-  return (
-    <Grid2 spacing={4} container>
-      <Grid2>
-        <BasicSwitch />
-      </Grid2>
-    </Grid2>
-  );
-};
+type Story = StoryObj<typeof meta>;
 
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-const theme = useTheme();
-
- <Button
-  size="small"
-  variant="outlined"
->
- Cancel / small
-</Button>
-
-<Button
-  size="medium"
-  variant="primary"
->
- Create / medium
-</Button>
-
-<Button
-  size="large"
-  variant="secondary"
->
-  Delete / large
-</Button>     
-      `,
-    },
+export const Playground: Story = {
+  args: {
+    label: 'Active',
+    value: false,
+    controlLabelSx: { gap: '8px' },
   },
 };

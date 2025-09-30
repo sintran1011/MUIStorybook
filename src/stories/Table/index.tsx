@@ -17,11 +17,11 @@ import { type Breakpoint, type SxProps, type Theme } from '@mui/system';
 import React, { useEffect, useRef, useState, type Key, type ReactNode } from 'react';
 import TablePaginationActions from './TablePagination';
 import { difference, isEmpty, uniq } from 'lodash';
-import { EmptyIcon } from '@stories/Icons';
-import BasicCheckbox from '@stories/Checkbox';
-import CheckBoxSingle from '@stories/Checkbox/CheckBoxSingle';
 import { checkEmptyFilters } from '@utils/index';
+import CheckBoxSingle from '@stories/Checkbox/CheckBoxSingle';
+import { EmptyIcon } from '@stories/Icons';
 import FilterIcon from './FilterIcon';
+import BasicCheckbox from '@stories/Checkbox';
 import FilterMenu from '@stories/Menu/FilterMenu';
 
 export interface Sorter {
@@ -576,6 +576,8 @@ const BasicTable = <T extends Record<string, any>>(props: TableProps<T>) => {
       sx={{
         border: `1px solid `,
         borderColor: bordered ? paletteColor.border.primary : 'transparent',
+        borderTopLeftRadius: '8px',
+        borderTopRightRadius: '8px',
       }}
     >
       <TableContainer
@@ -607,9 +609,10 @@ const BasicTable = <T extends Record<string, any>>(props: TableProps<T>) => {
             {renderHeader()}
           </TableHead>
           <TableBody>{isLoading ? renderLoading() : renderRow()}</TableBody>
+          {renderFooter()}
         </Table>
       </TableContainer>
-      {renderFooter()}
+
       <FilterMenu
         anchorEl={anchorEl}
         open={open}

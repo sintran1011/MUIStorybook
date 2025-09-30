@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import { StatusChip } from '@stories/StatusChip';
 import { Grid2 } from '@mui/material';
@@ -10,9 +10,30 @@ const meta: Meta<typeof StatusChip> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    hasIcon: {
+      description: 'Whether to show dot icon or not',
+    },
+    type: {
+      description: 'Decided color of `chip`, can config in color hashmap inside',
+    },
+    value: {
+      description: 'Label text inside `Chip`',
+    },
+  },
 };
 
 export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Playground: Story = {
+  args: {
+    hasIcon: true,
+    type: 'Active',
+    value: 'Active',
+  },
+};
 
 const ARR = [
   { type: 'Active', value: 'Active' },

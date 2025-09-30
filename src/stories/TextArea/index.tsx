@@ -1,8 +1,8 @@
-import { Box, type SxProps, type Theme, Typography } from "@mui/material";
-import { type TextareaAutosizeProps } from "@mui/material/TextareaAutosize";
-import { TextAreaCustom } from "./styled";
-import { useState } from "react";
-import { theme } from "@styles/theme";
+import { Box, type SxProps, type Theme, Typography } from '@mui/material';
+import { type TextareaAutosizeProps } from '@mui/material/TextareaAutosize';
+import { TextAreaCustom } from './styled';
+import { useState } from 'react';
+import { theme } from '@styles/theme';
 
 export interface TextAreaProps extends TextareaAutosizeProps {
   width?: number | string;
@@ -17,17 +17,17 @@ export interface TextAreaProps extends TextareaAutosizeProps {
 
 const TextArea = (props: TextAreaProps) => {
   const {
-    width = "100%",
+    width = '100%',
     value,
     maxCharacters,
     style,
     rows = 5,
     maxRows = 10,
-    placeholder = "Please type...",
+    placeholder = 'Please type...',
     sx,
     bordered = true,
     readOnly = false,
-    className = "",
+    className = '',
     containerSx,
     ...rest
   } = props;
@@ -36,10 +36,10 @@ const TextArea = (props: TextAreaProps) => {
 
   const renderCharacterCount = () => (
     <Typography
-      position={"absolute"}
+      position={'absolute'}
       bottom={-22}
-      right={"4px"}
-      color={"text.disabled"}
+      right={'4px'}
+      color={'text.disabled'}
       align="right"
       variant="body-medium"
     >
@@ -48,23 +48,21 @@ const TextArea = (props: TextAreaProps) => {
   );
 
   return (
-    <Box width={width} position={"relative"} sx={containerSx}>
+    <Box width={width} position={'relative'} sx={containerSx}>
       <TextAreaCustom
         value={value}
         style={{
-          border: "1px solid",
-          borderColor: bordered
-            ? theme.palette.interaction.border.neutralNormal
-            : "transparent",
+          border: '1px solid',
+          borderColor: bordered ? theme.palette.interaction.border.neutralNormal : 'transparent',
           ...style,
         }}
         maxLength={maxCharacters}
         maxRows={maxRows}
         placeholder={placeholder}
-        sx={{ resize: "none", overflow: "hidden", ...sx }}
+        sx={{ resize: 'none', overflow: 'hidden', ...sx }}
         {...rest}
         minRows={rows}
-        className={`${!bordered ? "none-shadow" : ""} ${className}`}
+        className={`${!bordered ? 'none-shadow' : ''} ${className}`}
         onFocus={() => setShow(true)}
         onBlur={() => setShow(false)}
         readOnly={readOnly}
@@ -75,6 +73,6 @@ const TextArea = (props: TextAreaProps) => {
   );
 };
 
-TextArea.displayName = "TextArea";
+TextArea.displayName = 'TextArea';
 
 export default TextArea;

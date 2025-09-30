@@ -4,10 +4,10 @@ import {
   type Theme,
   Typography,
   type SwitchProps,
-} from "@mui/material";
-import { CustomSwitch } from "./styled";
+} from '@mui/material';
+import { CustomSwitch } from './styled';
 
-export interface BasicSwitchProps extends Omit<SwitchProps, "onChange"> {
+export interface BasicSwitchProps extends Omit<SwitchProps, 'onChange'> {
   onValuesChange?: (val: any) => void;
   onChange?: (checked: boolean) => void;
   label?: string | React.ReactNode;
@@ -26,17 +26,13 @@ const BasicSwitch = (props: BasicSwitchProps) => {
   return (
     <FormControlLabel
       label={
-        typeof label === "string" ? (
-          <Typography variant="body-medium">{label}</Typography>
-        ) : (
-          label
-        )
+        typeof label === 'string' ? <Typography variant="body-medium">{label}</Typography> : label
       }
       sx={{
         ml: 0,
         mr: 0,
-        flexDirection: "row-reverse",
-        justifyContent: "space-between",
+        flexDirection: 'row-reverse',
+        justifyContent: 'space-between',
         ...controlLabelSx,
       }}
       control={

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Grid2 } from '@mui/material';
 import SignaturePad from '.';
 
@@ -9,9 +9,37 @@ const meta: Meta<typeof SignaturePad> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    width: {
+      description: '`Width` of SignaturePad',
+    },
+    height: {
+      description: '`Height` of SignaturePad',
+    },
+    color: {
+      description: '`Color` of signature ',
+      control: { type: 'color' },
+    },
+    lineWidth: {
+      description: '`Width` of paint line',
+    },
+    value: {
+      description: '`Controlled Value` to signature pad',
+    },
+  },
 };
 
 export default meta;
+
+type Story = StoryObj<typeof meta>;
+
+export const Playground: Story = {
+  args: {
+    height: 200,
+    width: 480,
+    color: '#000000',
+  },
+};
 
 export const Default = () => {
   return (
