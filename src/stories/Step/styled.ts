@@ -1,5 +1,5 @@
-import { StepConnector, stepConnectorClasses } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import { StepConnector, stepConnectorClasses } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 const StyledStepConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
@@ -18,8 +18,8 @@ const StyledStepConnector = styled(StepConnector)(({ theme }) => ({
   [`& .${stepConnectorClasses.line}`]: {
     height: 3,
     border: 0,
-    backgroundColor: theme.palette.neutral["+3"],
-    borderRadius: "4px",
+    backgroundColor: theme.palette.neutral['+3'],
+    borderRadius: '4px',
   },
 }));
 

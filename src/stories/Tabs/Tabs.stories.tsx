@@ -1,6 +1,7 @@
 import { Meta } from '@storybook/react';
 import BasicTabs from '@stories/Tabs';
 import { ReactNode } from 'react';
+import { theme } from '@styles/theme';
 
 const meta: Meta<typeof BasicTabs> = {
   title: 'Nexus/BasicTabs',
@@ -9,6 +10,41 @@ const meta: Meta<typeof BasicTabs> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    options: {
+      description: '`Array` to render `TabItems`',
+      control: 'object',
+      table: {
+        type: {
+          summary: 'TabOption[]',
+          detail: `
+interface TabOption {
+  key: string;
+  label: string | ReactNode;
+  content?: ReactNode;
+  disabled?: boolean;
+  icon?: string | ReactElement;
+}
+          `.trim(),
+        },
+      },
+    },
+    defaultValue: {
+      description: '`Key value` of initial tabs selected',
+    },
+    tabsProps: {
+      description: 'Custom Props pass to container',
+    },
+    tabProps: {
+      description: 'Custom Props pass to single tabs button',
+    },
+    tabPanelSx: {
+      description: 'Custom Props pass to tab content body',
+    },
+    onChange: {
+      description: 'Function trigger when change tabs with param is `Key of TabItems`',
+    },
+  },
 };
 
 export default meta;
@@ -112,10 +148,10 @@ export const FilledTabs = {
           backgroundColor: 'transparent',
         },
         '& .MuiButtonBase-root.Mui-selected': {
-          color: '#EF4923',
+          color: '#ffffff',
         },
         borderRadius: '8px',
-        backgroundColor: '#151313e6',
+        backgroundColor: theme.palette.brand.main,
         backdropFilter: 'blur(2px)',
       },
     },

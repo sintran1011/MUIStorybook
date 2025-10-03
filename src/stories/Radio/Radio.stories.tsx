@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Grid2 } from '@mui/material';
 import BaseRadioGroup from './RadioGroup';
 
 const meta: Meta<typeof BaseRadioGroup> = {
@@ -39,77 +38,39 @@ export const Playground: Story = {
   args: {
     options: [
       {
-        label: 'Option1',
+        label: 'Option 1',
         value: '1',
       },
       {
-        label: 'Option2',
+        label: 'Option 2',
         value: '2',
       },
       {
-        label: 'Option3',
+        label: 'Option 3',
         value: '3',
       },
     ],
     height: 'auto',
     direction: 'row',
     readOnly: false,
-    value: '1',
   },
-};
-
-export const Default = () => {
-  return (
-    <Grid2 spacing={4} container>
-      <Grid2>
-        <BaseRadioGroup
-          options={[
-            {
-              label: 'Option1',
-              value: '1',
-            },
-            {
-              label: 'Option2',
-              value: '2',
-            },
-            {
-              label: 'Option3',
-              value: '3',
-            },
-          ]}
-        />
-      </Grid2>
-    </Grid2>
-  );
-};
-
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-const theme = useTheme();
-
- <Button
-  size="small"
-  variant="outlined"
->
- Cancel / small
-</Button>
-
-<Button
-  size="medium"
-  variant="primary"
->
- Create / medium
-</Button>
-
-<Button
-  size="large"
-  variant="secondary"
->
-  Delete / large
-</Button>     
-      `,
-    },
-  },
+  render: args => (
+    <BaseRadioGroup
+      options={[
+        {
+          label: 'Option1',
+          value: '1',
+        },
+        {
+          label: 'Option2',
+          value: '2',
+        },
+        {
+          label: 'Option3',
+          value: '3',
+        },
+      ]}
+      {...args}
+    />
+  ),
 };

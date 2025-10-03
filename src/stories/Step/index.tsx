@@ -1,12 +1,6 @@
-import {
-  Box,
-  Step,
-  StepLabel,
-  Stepper,
-  type StepperProps,
-} from "@mui/material";
-import { type ReactNode } from "react";
-import { StyledStepConnector } from "./styled";
+import { Box, Step, StepLabel, Stepper, type StepperProps } from '@mui/material';
+import { type ReactNode } from 'react';
+import { StyledStepConnector } from './styled';
 
 export type Step = {
   key: string;
@@ -36,11 +30,9 @@ const BasicStep = (props: BasicStep) => {
         activeStep={activeStep}
         alternativeLabel={alternativeLabel}
       >
-        {options.map((i) => (
+        {options.map(i => (
           <Step key={i.key}>
-            <StepLabel StepIconComponent={createCustomStepIcon(i.icon)}>
-              {i.label}
-            </StepLabel>
+            <StepLabel StepIconComponent={createCustomStepIcon(i.icon)}>{i.label}</StepLabel>
           </Step>
         ))}
       </Stepper>

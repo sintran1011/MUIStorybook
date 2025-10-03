@@ -26,6 +26,9 @@ const meta: Meta<typeof BaseInput> = {
     bordered: {
       description: 'Change input to `non-border` style',
     },
+    placeholder: {
+      description: 'Placeholder of input',
+    },
   },
 };
 
@@ -34,7 +37,14 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {
-  args: { height: 32, fullWidth: false, disabled: false, readOnly: false, bordered: true },
+  args: {
+    height: 32,
+    fullWidth: false,
+    disabled: false,
+    readOnly: false,
+    bordered: true,
+    placeholder: 'Search...',
+  },
 };
 
 export const Gallery = () => {

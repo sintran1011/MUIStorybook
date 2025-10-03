@@ -1,6 +1,8 @@
-import { Meta } from '@storybook/react';
-import { Grid2 } from '@mui/material';
+import { Meta, StoryObj } from '@storybook/react';
+import { Box, Stack, Typography } from '@mui/material';
 import BasicStep from '.';
+import { theme } from '@styles/theme';
+import PendingIcon from '@mui/icons-material/Pending';
 
 const meta: Meta<typeof BasicStep> = {
   title: 'Nexus/BasicStep',
@@ -9,53 +11,82 @@ const meta: Meta<typeof BasicStep> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    options: {
+      description: '`Array` to render `StepItems` ',
+      control: 'object',
+      table: {
+        type: {
+          summary: 'Step[]',
+          detail: `
+type Step = {
+  key: string;
+  icon?: ReactNode;
+  label?: string | ReactNode;
+}
+          `.trim(),
+        },
+      },
+    },
+    activeStep: {
+      description: '`Index` of Step is active',
+    },
+  },
 };
 
 export default meta;
 
-export const Default = () => {
-  return (
-    <Grid2 spacing={4} container>
-      <Grid2>
-        <BasicStep
-          activeStep={1}
-          options={[
-            { key: '1', label: 'sinbad' },
-            { key: '1', label: 'sintran' },
-          ]}
-        />
-      </Grid2>
-    </Grid2>
-  );
-};
+type Story = StoryObj<typeof meta>;
 
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-const theme = useTheme();
-
- <Button
-  size="small"
-  variant="outlined"
->
- Cancel / small
-</Button>
-
-<Button
-  size="medium"
-  variant="primary"
->
- Create / medium
-</Button>
-
-<Button
-  size="large"
-  variant="secondary"
->
-  Delete / large
-</Button>     
-      `,
-    },
+export const Playground: Story = {
+  args: {
+    options: [
+      {
+        key: 'a',
+        label: (
+          <Stack>
+            <Typography variant="body-medium">Approved</Typography>
+            <Typography variant="body-small">By Sintran</Typography>
+          </Stack>
+        ),
+      },
+      {
+        key: 'b',
+        label: (
+          <Stack>
+            <Typography variant="body-medium">Pending</Typography>
+            <Typography variant="body-small">By Sinbad</Typography>
+          </Stack>
+        ),
+        icon: <PendingIcon sx={{ color: theme.palette.brand.main }} />,
+      },
+      {
+        key: 'c',
+        label: (
+          <Stack>
+            <Typography variant="body-medium">Waiting</Typography>
+            <Typography variant="body-small">By Tam Tran</Typography>
+          </Stack>
+        ),
+      },
+      {
+        key: 'd',
+        label: (
+          <Stack>
+            <Typography variant="body-medium">Waiting</Typography>
+            <Typography variant="body-small">By Tran tam</Typography>
+          </Stack>
+        ),
+      },
+    ],
+    alternativeLabel: false,
+    activeStep: 2,
   },
+  render: args => (
+    <Box width={800} sx={{ bgcolor: theme.palette.background.paper, borderColor: '#F0F0F0' }}>
+      <Box p={'8px 24px'}>
+        <BasicStep {...args} />
+      </Box>
+    </Box>
+  ),
 };

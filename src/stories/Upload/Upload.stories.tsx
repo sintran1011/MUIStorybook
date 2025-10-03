@@ -1,6 +1,7 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 
 import Upload from '@stories/Upload';
+import { Stack } from '@mui/material';
 
 const meta: Meta<typeof Upload> = {
   title: 'Nexus/Upload',
@@ -13,11 +14,15 @@ const meta: Meta<typeof Upload> = {
 
 export default meta;
 
-export const Default = {
-  args: {
-    processStepsRender: 3,
-    containerSx: {
-      width: '800px',
-    },
+type Story = StoryObj<typeof meta>;
+
+export const Playground: Story = {
+  args: {},
+  render: args => {
+    return (
+      <Stack width={'700px'} height={'300px'}>
+        <Upload {...args} />
+      </Stack>
+    );
   },
 };

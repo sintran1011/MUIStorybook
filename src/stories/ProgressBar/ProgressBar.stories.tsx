@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Box, Grid2 } from '@mui/material';
 import ProgressBar from '.';
 
@@ -9,45 +9,29 @@ const meta: Meta<typeof ProgressBar> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    error: {
+      description: '`Error` status of progress',
+    },
+    progress: {
+      description: '`Number percentage` of progress loading',
+      control: 'range',
+    },
+  },
 };
 
 export default meta;
 
-export const Default = () => {
-  return (
-    <Box width={800}>
-      <ProgressBar progress={50} />
-    </Box>
-  );
-};
+type Story = StoryObj<typeof meta>;
 
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-const theme = useTheme();
-
- <Button
-  size="small"
-  variant="outlined"
->
- Cancel / small
-</Button>
-
-<Button
-  size="medium"
-  variant="primary"
->
- Create / medium
-</Button>
-
-<Button
-  size="large"
-  variant="secondary"
->
-  Delete / large
-</Button>     
-      `,
-    },
+export const Playground: Story = {
+  args: {
+    progress: 10,
+    error: false,
   },
+  render: args => (
+    <Box width={800}>
+      <ProgressBar {...args} />
+    </Box>
+  ),
 };

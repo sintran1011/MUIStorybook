@@ -1,5 +1,5 @@
 'use client';
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import BasicMenu from '@stories/Menu';
 import { useState } from 'react';
 import BoltIcon from '@mui/icons-material/Bolt';
@@ -32,6 +32,9 @@ const meta: Meta<typeof BasicMenu> = {
     },
     menuProps: {
       description: 'Optional props add to Menu, extends from Menu MUI',
+    },
+    disabledClosedOnClick: {
+      description: 'Prevent event closed when user select item if `True`',
     },
   },
 };

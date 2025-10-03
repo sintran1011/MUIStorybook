@@ -1,8 +1,5 @@
-import { Meta } from '@storybook/react';
-
+import { Meta, StoryObj } from '@storybook/react';
 import BasicSelect from '@stories/Select';
-import { Stack, Typography } from '@mui/material';
-import { useState } from 'react';
 
 const meta: Meta<typeof BasicSelect> = {
   title: 'Nexus/BasicSelect',
@@ -11,116 +8,61 @@ const meta: Meta<typeof BasicSelect> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    options: {
+      description: '`Array` to render `MenuItems` in dropdown',
+      control: 'object',
+      table: {
+        type: {
+          summary: 'MenuItemProps[]',
+          detail: `
+interface MenuItemProps {
+  value: string;
+  label: MenuItemLabel;
+  icon?: string;
+  disabled?: boolean;
+}
+          `.trim(),
+        },
+      },
+    },
+    width: {
+      description: '`Width` of Autocomplete, will be remove in case `fullWidth = true`',
+    },
+    height: {
+      description: 'Height of Autocomplete',
+    },
+    menuItemProps: {
+      description: 'Additional `MenuItems props` add to control `MenuItems`',
+    },
+    multiple: {
+      description: 'If `True`, trigger multiple mode allow user select many values',
+    },
+    value: {
+      description: 'Value to controlled Autocomplete',
+    },
+    readOnly: {
+      description: 'Change component into `ReadOnly` state',
+    },
+    disabled: {
+      description: 'Change component into `Disabled` state',
+    },
+    bordered: {
+      description: 'Whether component have border or not',
+    },
+  },
 };
 
 export default meta;
 
-const DISCOUNT_TYPE_LIST = [
-  'Launch Discount',
-  'Weeklong Deals',
-  'Seasonal Sales',
-  'Midweek Deals',
-  'Daily Deals',
-  'Weekend Deals',
-  'Custom Discount',
-];
+type Story = StoryObj<typeof meta>;
 
-export const Default = () => {
-  const [value1, setValue1] = useState<any>('Launch Discount');
-  const [value2, setValue2] = useState<any>(['Weeklong Deals']);
-  const [value3, setValue3] = useState<any>('Seasonal Sales');
-
-  return (
-    <Stack flexDirection={'row'} gap={6}>
-      <BasicSelect
-        options={[
-          { label: 'SinCEO', value: 'ceo' },
-          { label: 'SinPM', value: 'pm' },
-          { label: 'SinFE', value: 'fe' },
-        ]}
-      />
-    </Stack>
-  );
-};
-
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-      const useGenerateOptions = (props: useGenerateOptionsProps) => {
-  const { list = [], value, type = "radio" } = props;
-  return (list || []).map((i) => {
-    const checked = value === i || ((value as string[]) || []).includes(i);
-    if (type === "radio")
-      return {
-        label: (
-          <Typography
-            display="flex"
-            alignItems="center"
-            fontSize="14px"
-            color="#fff"
-            lineHeight="20px"
-            variant="body-medium"
-            gap={1}
-          >
-            <StyledRadio checked={checked} />
-            {i}
-          </Typography>
-        ),
-        value: i,
-      };
-    return {
-      label: (
-        <Typography
-          display="flex"
-          alignItems="center"
-          fontSize="14px"
-          color="#fff"
-          lineHeight="20px"
-          variant="body-medium"
-          gap={1}
-        >
-          {type === "checkbox" ? <BasicCheckbox checked={checked} /> : null}
-          {i}
-        </Typography>
-      ),
-      value: i,
-    };
-  });
-};
-//Radio Select
-<BasicSelect
-  options={useGenerateOptions({
-    list: ${JSON.stringify(DISCOUNT_TYPE_LIST, null, 2)},
-    value: "Launch Discount",
-    type: "radio",
-  })}
-  value="Launch Discount"
-  onChange={(newValue) => console.log(newValue)}
-  width={200}
-/>
-//Checkbox Select
-<BasicSelect
-  options={useGenerateOptions({
-    list: ${JSON.stringify(DISCOUNT_TYPE_LIST, null, 2)},
-    value: ["Launch Discount"],
-    type: "checkbox",
-  })}
-  value={["Launch Discount"]}
-  onChange={(newValue) => console.log(newValue)}
-  width={200}
-/>
-//Base Select
-<BasicSelect
-  options={useGenerateOptions({
-    list: ${JSON.stringify(DISCOUNT_TYPE_LIST, null, 2)},
-    value: "Launch Discount",
-    type: "none",
-  })}
-  value="Launch Discount"
-  onChange={(newValue) => console.log(newValue)}
-  width={200}
-/>`,
-    },
+export const Playground: Story = {
+  args: {
+    options: [
+      { label: 'Bánh bao', value: '1' },
+      { label: 'Xá xíu', value: '2' },
+      { label: 'Mì udon', value: '3' },
+    ],
   },
 };

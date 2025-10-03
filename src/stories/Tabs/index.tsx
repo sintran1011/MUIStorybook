@@ -1,12 +1,6 @@
-import {
-  Box,
-  type SxProps,
-  Tab,
-  type TabProps,
-  type TabsProps,
-} from "@mui/material";
-import React, { type ReactElement, type ReactNode, useState } from "react";
-import { CustomTab } from "./styled";
+import { Box, type SxProps, Tab, type TabProps, type TabsProps } from '@mui/material';
+import React, { type ReactElement, type ReactNode, useState } from 'react';
+import { CustomTab } from './styled';
 
 export interface TabOption {
   key: string;
@@ -26,11 +20,8 @@ interface GenericTabsProps {
 }
 
 const BasicTabs = (props: GenericTabsProps) => {
-  const { options, defaultValue, tabsProps, tabProps, tabPanelSx, onChange } =
-    props;
-  const [currentTab, setCurrentTab] = useState<string>(
-    defaultValue || options[0]?.key || "",
-  );
+  const { options, defaultValue, tabsProps, tabProps, tabPanelSx, onChange } = props;
+  const [currentTab, setCurrentTab] = useState<string>(defaultValue || options[0]?.key || '');
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: string) => {
     setCurrentTab(newValue);
@@ -46,7 +37,7 @@ const BasicTabs = (props: GenericTabsProps) => {
         onChange={handleTabChange}
         {...tabsProps}
       >
-        {options.map((option) => (
+        {options.map(option => (
           <Tab
             key={option.key}
             label={option.label}
@@ -67,8 +58,8 @@ const BasicTabs = (props: GenericTabsProps) => {
           hidden={currentTab !== option.key}
           sx={{
             p: { xs: 1, md: 3 },
-            "& button": {
-              textTransform: "capitalize",
+            '& button': {
+              textTransform: 'capitalize',
             },
             ...tabPanelSx,
           }}
@@ -82,4 +73,4 @@ const BasicTabs = (props: GenericTabsProps) => {
 
 export default BasicTabs;
 
-BasicTabs.displayName = "BasicTabs";
+BasicTabs.displayName = 'BasicTabs';

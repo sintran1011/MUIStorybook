@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { Grid2 } from '@mui/material';
 import BasicTimeline from '.';
 
@@ -9,49 +9,47 @@ const meta: Meta<typeof BasicTimeline> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    options: {
+      description: '`Array` to render `Items`',
+      control: 'object',
+      table: {
+        type: {
+          summary: 'TimelineOption[]',
+          detail: `
+interface TimelineOption {
+  content?: string | ReactNode;
+  icon?: ReactNode;
+  dotProps?: TimelineDotProps;
+  connectorProps?: TimelineConnectorProps;
+  separatorProps?: TimelineSeparatorProps;
+  contentProps?: TimelineContentProps;
+}
+          `.trim(),
+        },
+      },
+    },
+  },
 };
 
 export default meta;
 
-export const Default = () => {
-  return (
+type Story = StoryObj<typeof meta>;
+
+export const Playground: Story = {
+  args: {},
+  render: args => (
     <Grid2 spacing={4} container>
       <Grid2>
         <BasicTimeline
-          options={[{ content: 'sinbad' }, { content: 'sinbad' }, { content: 'sinbad' }]}
+          options={[
+            { content: 'Sinbad have created' },
+            { content: 'Sinbad edited' },
+            { content: 'Sinbad approved' },
+          ]}
+          {...args}
         />
       </Grid2>
     </Grid2>
-  );
-};
-
-Default.parameters = {
-  docs: {
-    source: {
-      code: `
-const theme = useTheme();
-
- <Button
-  size="small"
-  variant="outlined"
->
- Cancel / small
-</Button>
-
-<Button
-  size="medium"
-  variant="primary"
->
- Create / medium
-</Button>
-
-<Button
-  size="large"
-  variant="secondary"
->
-  Delete / large
-</Button>     
-      `,
-    },
-  },
+  ),
 };
