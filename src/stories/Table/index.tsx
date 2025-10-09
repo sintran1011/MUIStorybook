@@ -169,7 +169,7 @@ const BasicTable = <T extends Record<string, any>>(props: TableProps<T>) => {
 
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  //Fixed columns - only effect if width is number and at least column don't have width
+  //Fixed columns - only effect if width is number and all fixed columns have width
   const generateFixedColHashmap = () => {
     let leftOffsetPx = 0;
     const leftOffsets: Record<string, number> = {};
@@ -231,6 +231,25 @@ const BasicTable = <T extends Record<string, any>>(props: TableProps<T>) => {
         filterArr = filterArr.filter(i => filters[filterKey].includes(i[filterKey]));
     });
     return !isEmpty(filterArr);
+  };
+
+  const onHoverTableRow = (prefix: string, id: string, isChecked: boolean, isLeave?: boolean) => {
+    if (isLoading) return;
+
+    // set all child td to background color base on isChecked
+    const el = document.getElementById(`${prefix}-${id}`);
+    if (!el) return;
+    const tdList = el.querySelectorAll('td');
+    tdList.forEach(td => {
+      if (isLeave) {
+        (td as HTMLElement).classList.remove('hover-table-row');
+        (td as HTMLElement).classList.remove('hover-table-row-checked');
+      } else {
+        (td as HTMLElement).classList.add(
+          isChecked ? 'hover-table-row-checked' : 'hover-table-row',
+        );
+      }
+    });
   };
 
   const renderFilter = () =>
@@ -417,6 +436,14 @@ const BasicTable = <T extends Record<string, any>>(props: TableProps<T>) => {
           const filterSx = generateFilterSx(row);
           return (
             <TableRow
+              // hover
+              onMouseEnter={() => {
+                onHoverTableRow('table-row', row[rowKey], isChecked);
+              }}
+              onMouseLeave={() => {
+                onHoverTableRow('table-row', row[rowKey], isChecked, true);
+              }}
+              id={`table-row-${row[rowKey]}`}
               sx={{
                 '& td': {
                   padding: '4px 8px',
@@ -558,6 +585,7 @@ const BasicTable = <T extends Record<string, any>>(props: TableProps<T>) => {
     ) : null;
   };
 
+  // trigger shadow when scroll horizontal
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
